@@ -1,13 +1,12 @@
 import type { ChatInputApplicationCommandData, ChatInputCommandInteraction, Client } from "discord.js";
-import type { Exception } from "../exception.js";
 
 import { Ping } from "./ping.js";
 import { Donate } from "./donate.js";
 import { debug } from "../log.js";
+import type { Result } from "../exception.js";
+import { Feedback } from "./feedback.js";
 
-export type CommandHandlerResponse = [true] | [false, Exception];
-
-export type CommandHandler = (client: Client, interaction: ChatInputCommandInteraction) => Promise<CommandHandlerResponse>;
+export type CommandHandler = (client: Client, interaction: ChatInputCommandInteraction) => Promise<Result>;
 
 export type Subcommand = {
     handler: CommandHandler
@@ -24,6 +23,7 @@ export type Command = {
 export const COMMANDS = [
     Ping,
     Donate,
+    Feedback,
 ]
 
 export function getCommandsData(): ChatInputApplicationCommandData[] {

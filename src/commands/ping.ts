@@ -1,7 +1,8 @@
 import { ApplicationCommandType, ChatInputCommandInteraction, Client, EmbedBuilder, MessageFlags } from "discord.js";
-import type { Command, CommandHandlerResponse } from "./index.js";
+import type { Command } from "./index.js";
 import Colors from "../colors.js";
 import { debug } from "../log.js";
+import type { Result } from "../exception.js";
 
 export const Ping: Command = {
     data: {
@@ -9,7 +10,7 @@ export const Ping: Command = {
         description: "Check your connection with the bot",
         type: ApplicationCommandType.ChatInput,
     },
-    handler: async function execute(client: Client, interaction: ChatInputCommandInteraction): Promise<CommandHandlerResponse> {
+    handler: async function execute(client: Client, interaction: ChatInputCommandInteraction): Promise<Result> {
         debug("Handling 'ping' command");
         const latency = Math.abs(Date.now() - interaction.createdTimestamp);
         const apiLatency = client.ws.ping;

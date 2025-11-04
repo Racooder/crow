@@ -1,13 +1,13 @@
 import { ApplicationCommandOptionType, ApplicationCommandType, ChatInputCommandInteraction, Client, ModalBuilder } from "discord.js";
-import type { Command, CommandHandlerResponse } from "./index.js";
+import type { Command } from "./index.js";
 import { debug } from "../log.js";
-import { Exception } from "../exception.js";
+import { Exception, type Result } from "../exception.js";
 import { createBasicTextInput } from "../util.js";
 
-export const Template: Command = {
+export const Feedback: Command = {
     data: {
-        name: "template",
-        description: "A template command!",
+        name: "feedback",
+        description: "Provide feedback on the bot",
         type: ApplicationCommandType.ChatInput,
         options: [
             {
@@ -23,8 +23,8 @@ export const Template: Command = {
             }
         ],
     },
-    handler: async function execute(_client: Client, interaction: ChatInputCommandInteraction): Promise<CommandHandlerResponse> {
-        debug("Handling 'template' command");
+    handler: async function execute(_client: Client, interaction: ChatInputCommandInteraction): Promise<Result> {
+        debug("Handling 'feedback' command");
 
         const feedbackType = interaction.options.getString("type", true);
 
@@ -40,7 +40,7 @@ export const Template: Command = {
                 modal = createGeneralFeedbackModal();
                 break;
             default:
-                return [false, new Exception("Invalid feedback type selected", "An unknown feedback type was selected in the feedback command. This should never happen. Please report this to the developers.")];
+                return [false, new Exception("Invalid feedback type selected", "An unknown feedback type was selected in the feedback command. (This should never happen. Please report this to the developers.)")];
         }
 
         await interaction.showModal(modal);
@@ -55,7 +55,7 @@ function createBugReportModal(): ModalBuilder {
     const steps = createBasicTextInput("stepsToReproduce", "Steps to reproduce the issue");
 
     return new ModalBuilder()
-        .setCustomId("bugReportModal")
+        .setCustomId("feedback;bug_report")
         .setTitle("Bug Report")
         .addLabelComponents(expected, actualLabel, steps);
 }
@@ -65,7 +65,7 @@ function createFeatureRequestModal(): ModalBuilder {
     const otherDetails = createBasicTextInput("otherDetails", "Additional details (i.e. image links)", false);
 
     return new ModalBuilder()
-        .setCustomId("featureRequestModal")
+        .setCustomId("feedback;feature_request")
         .setTitle("Feature Request")
         .addLabelComponents(description, otherDetails);
 }
@@ -74,7 +74,7 @@ function createGeneralFeedbackModal(): ModalBuilder {
     const description = createBasicTextInput("description", "Write your feedback here");
 
     return new ModalBuilder()
-        .setCustomId("generalFeedbackModal")
+        .setCustomId("feedback;general_feedback")
         .setTitle("General Feedback")
         .addLabelComponents(description);
 }

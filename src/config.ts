@@ -6,7 +6,7 @@ function loadDotenv(): void {
     debug("Loading untyped config")
     if (existsSync("meta/.env")) {
         debug("Loading .env")
-        dotenv.config();
+        dotenv.config({ path: "meta/.env" });
         return;
     }
 

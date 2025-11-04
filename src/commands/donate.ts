@@ -1,7 +1,8 @@
 import { ActionRowBuilder, ApplicationCommandType, ButtonBuilder, ButtonStyle, ChatInputCommandInteraction, Client, EmbedBuilder, MessageFlags, type APIActionRowComponent, type APIComponentInMessageActionRow } from "discord.js";
-import type { Command, CommandHandlerResponse } from "./index.js";
+import type { Command } from "./index.js";
 import Colors from "../colors.js";
 import { debug } from "../log.js";
+import type { Result } from "../exception.js";
 
 const KOFI_URL = "https://ko-fi.com/racooder";
 const PAYPAL_URL = "https://paypal.me/racooder";
@@ -13,7 +14,7 @@ export const Donate: Command = {
         description: "Support the development of this bot",
         type: ApplicationCommandType.ChatInput,
     },
-    handler: async function execute(_client: Client, interaction: ChatInputCommandInteraction): Promise<CommandHandlerResponse> {
+    handler: async function execute(_client: Client, interaction: ChatInputCommandInteraction): Promise<Result> {
         debug("Handling 'donate' command");
 
         const embed = createDonationEmbed();

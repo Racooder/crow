@@ -1,0 +1,13 @@
+import { Client, ModalSubmitInteraction } from "discord.js";
+import type { Modal } from "./index.js";
+import { debug } from "../log.js";
+import type { Result } from "../exception.js";
+
+export const Template: Modal = {
+    id: "template",
+    handler: async function execute(_client: Client, _interaction: ModalSubmitInteraction, _args: string[]): Promise<Result> {
+        debug("Handling 'template' command");
+        // Command handling logic goes here
+        return [true];
+    }
+}

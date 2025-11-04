@@ -31,7 +31,7 @@ export const ClientReady: EventListener = {
 function registerApplicationCommands(application: ClientApplication): void {
     info("Registering application (/) commands");
 
-    deployToTestGuild();
+    // deployToTestGuild(); // Deploy to testing guild (for faster updates)
 
     const commandData = getCommandsData();
     application.commands.set(commandData);
@@ -43,5 +43,5 @@ function deployToTestGuild(): void {
     if (config.testing_guild_id === "")
         return debug("Testing guild ID is not set, skipping deployment to testing guild");
 
-    deployCommands({ guildId: config.testing_guild_id }); // Deploy to testing guild (for faster updates)
+    deployCommands({ guildId: config.testing_guild_id });
 }

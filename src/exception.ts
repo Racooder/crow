@@ -21,3 +21,5 @@ export class Exception {
         replyHowever(this.userReply,interaction);
     }
 }
+
+export type Result = [true] | [false, Exception];
