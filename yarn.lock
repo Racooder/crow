@@ -240,6 +240,11 @@
   resolved "https://registry.yarnpkg.com/@pkgjs/parseargs/-/parseargs-0.11.0.tgz#a77ea742fab25775145434eb1d2328cf5013ac33"
   integrity sha512-+1VkjdD0QBLPodGrJUeqarH8VAIvQODIbwh9XpP5Syisf7YoQgsJKPNFoqqLQlu+VQ/tVSshMR6loPMn8U+dPg==
 
+"@prisma/client@^6.18.0":
+  version "6.18.0"
+  resolved "https://registry.yarnpkg.com/@prisma/client/-/client-6.18.0.tgz#95f0efe03b5827d9bf5c80b6b7298e46094b5fbf"
+  integrity sha512-jnL2I9gDnPnw4A+4h5SuNn8Gc+1mL1Z79U/3I9eE2gbxJG1oSA+62ByPW4xkeDgwE0fqMzzpAZ7IHxYnLZ4iQA==
+
 "@prisma/config@6.18.0":
   version "6.18.0"
   resolved "https://registry.yarnpkg.com/@prisma/config/-/config-6.18.0.tgz#3f8f2eca12ceb41f81e34b186b3aa2619959086c"
@@ -269,6 +274,11 @@
     "@prisma/engines-version" "6.18.0-8.34b5a692b7bd79939a9a2c3ef97d816e749cda2f"
     "@prisma/fetch-engine" "6.18.0"
     "@prisma/get-platform" "6.18.0"
+
+"@prisma/extension-accelerate@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@prisma/extension-accelerate/-/extension-accelerate-2.0.2.tgz#2a8afac940413fb814b50ce9015dac049a783503"
+  integrity sha512-yZK6/k7uOEFpEsKoZezQS1CKDboPtBCQ0NyI70e1Un8tDiRgg80iWGyjsJmRpps2ZIut3MroHP+dyR3wVKh8lA==
 
 "@prisma/fetch-engine@6.18.0":
   version "6.18.0"

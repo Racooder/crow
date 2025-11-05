@@ -22,7 +22,9 @@ export async function deployCommands({ guildId }: DeployCommandsProps): Promise<
     } catch (e) {
         if (typeof e === "string" || e instanceof Error) {
             error(e);
+        } else {
+            console.error(e);
+            error("Failed to deploy commands (unknown error)");
         }
-        console.error(e);
     }
 }

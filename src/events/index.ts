@@ -1,9 +1,8 @@
-import type { Client } from "discord.js";
-import { InteractionCreate } from "./interactionCreate.js";
-import { ClientReady } from "./clientReady.js";
+import { InteractionCreate } from "./InteractionCreate.js";
+import { ClientReady } from "./ClientReady.js";
 
 export type EventListener = {
-    start: (client: Client) => void;
+    start: () => void;
 }
 
 // Event Listener Registry

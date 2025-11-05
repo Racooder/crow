@@ -1,6 +1,8 @@
-import { ChatInputCommandInteraction, LabelBuilder, MessageFlags, TextInputBuilder, TextInputStyle } from "discord.js";
+import { ChatInputCommandInteraction, LabelBuilder, MessageFlags, ModalSubmitInteraction, TextInputBuilder, TextInputStyle } from "discord.js";
 
-export function replyHowever(message: string, interaction: ChatInputCommandInteraction): void {
+export type ReplyableInteraction = ChatInputCommandInteraction | ModalSubmitInteraction;
+
+export function replyHowever(message: string, interaction: ReplyableInteraction): void {
     if (interaction.replied) {
         interaction.followUp({
             content: message,
@@ -8,12 +10,14 @@ export function replyHowever(message: string, interaction: ChatInputCommandInter
         });
         return;
     }
+
     if (interaction.deferred) {
         interaction.editReply({
             content: message,
         });
         return;
     }
+
     interaction.reply({
         content: message,
         flags: [MessageFlags.Ephemeral],

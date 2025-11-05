@@ -1,6 +1,6 @@
 import { EmbedBuilder } from "discord.js";
-import { Client } from 'discord.js';
 import { config } from "./config.js";
+import client from "./client.js";
 
 const format = {
     Reset: "\x1b[0m",
@@ -48,19 +48,19 @@ export function warn(message: string): void {
     console.warn(`${format.FgYellow}${message}${format.Reset}`);
 }
 
-export function error(message: string | Error, client?: Client): void {
+export function error(message: string | Error, preventDiscordLogging = false): void {
     if (message instanceof Error) {
         console.error(`${format.FgRed}${message.name}: ${message.message}${format.Reset}\n${message.stack}`);
     } else {
         console.error(`${format.FgRed}${message}${format.Reset}`);
     }
 
-    if (client) {
-        errorToDiscord(client, message);
+    if (client.isReady() && !preventDiscordLogging) {
+        errorToDiscord(message);
     }
 }
 
-export async function errorToDiscord(client: Client, message: string | Error): Promise<void> {
+export async function errorToDiscord(message: string | Error): Promise<void> {
     debug("Logging error to discord");
     if (config.log_channel === "") return debug("Discord logging is disabled by config");
 
@@ -78,8 +78,8 @@ export async function errorToDiscord(client: Client, message: string | Error): P
     debug("Fetching channel")
     const channel = await client.channels.fetch(config.log_channel);
 
-    if (!channel) return error("Can't access the log channel");
-    if (!channel.isSendable()) return error("Can't send messages in the log channel");
+    if (!channel) return error("Can't access the log channel", true);
+    if (!channel.isSendable()) return error("Can't send messages in the log channel", true);
 
     debug("Sending error message")
     channel.send({

@@ -1,12 +1,12 @@
-import type { ChatInputApplicationCommandData, ChatInputCommandInteraction, Client } from "discord.js";
+import type { ChatInputApplicationCommandData, ChatInputCommandInteraction } from "discord.js";
 
-import { Ping } from "./ping.js";
-import { Donate } from "./donate.js";
+import { Ping } from "./Ping.js";
+import { Donate } from "./Donate.js";
 import { debug } from "../log.js";
-import type { Result } from "../exception.js";
-import { Feedback } from "./feedback.js";
+import type { Result } from "../result.js";
+import { Feedback } from "./Feedback.js";
 
-export type CommandHandler = (client: Client, interaction: ChatInputCommandInteraction) => Promise<Result>;
+export type CommandHandler = (interaction: ChatInputCommandInteraction) => Promise<Result>;
 
 export interface Subcommand {
     handler?: CommandHandler;
@@ -19,18 +19,18 @@ export interface Command extends Subcommand {
 
 // Commands registry
 
-export const COMMANDS = [
-    Ping,
-    Donate,
-    Feedback,
-]
+export const COMMANDS: Record<string, Command> = {
+    [Ping.data.name]: Ping,
+    [Donate.data.name]: Donate,
+    [Feedback.data.name]: Feedback,
+};
 
 export function getCommandsData(): ChatInputApplicationCommandData[] {
     debug("Getting data from all commands");
-    return COMMANDS.map(cmd => cmd.data);
+    return Object.values(COMMANDS).map(cmd => cmd.data);
 }
 
 export function mapCommandData<T>(callbackFunction: (data: ChatInputApplicationCommandData) => T): T[] {
     debug("Mapping commands data");
-    return COMMANDS.map(cmd => callbackFunction(cmd.data));
+    return Object.values(COMMANDS).map(cmd => callbackFunction(cmd.data));
 }

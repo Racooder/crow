@@ -1,11 +1,9 @@
 import { copyFileSync, existsSync } from 'fs';
-import { debug, info } from './log.js';
 import dotenv from 'dotenv';
+//! Can't use log here because of circular dependency
 
 function loadDotenv(): void {
-    debug("Loading untyped config")
     if (existsSync("meta/.env")) {
-        debug("Loading .env")
         dotenv.config({ path: "meta/.env" });
         return;
     }
@@ -29,7 +27,6 @@ type Config = {
 }
 
 function loadConfig(): Config {
-    info("Loading config")
     loadDotenv();
     return {
         testing_guild_id: process.env['TESTING_GUILD_ID'] as string,
