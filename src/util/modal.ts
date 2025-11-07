@@ -1,5 +1,4 @@
-import { TextInputBuilder } from "@discordjs/builders";
-import { LabelBuilder, TextInputStyle } from "discord.js";
+import { LabelBuilder, TextInputStyle, TextInputBuilder } from "discord.js";
 import { debug } from "../log.js";
 
 /**

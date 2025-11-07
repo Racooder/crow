@@ -1,4 +1,4 @@
-import { ApplicationCommandOptionType, ApplicationCommandType, ChatInputCommandInteraction, ModalBuilder, type LabelBuilderData } from "discord.js";
+import { ApplicationCommandOptionType, ApplicationCommandType, ChatInputCommandInteraction, LabelBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, type LabelBuilderData } from "discord.js";
 import type { Command } from "./index.js";
 import { debug } from "../log.js";
 import { Err, Ok, type Result } from "../result.js";
@@ -76,10 +76,16 @@ function createFeatureRequestModal(): ModalBuilder {
     const description = createBasicTextInput(feedbackModalFields.featureRequest.description, "Describe your suggested feature");
     const otherDetails = createBasicTextInput(feedbackModalFields.featureRequest.otherDetails, "Additional details (i.e. image links)", false);
 
-    return new ModalBuilder()
-        .setCustomId("test")
-        .setTitle("test")
-        .addLabelComponents(createBasicTextInput("test", "test"));
+    // return new ModalBuilder()
+    //     .setCustomId("test")
+    //     .setTitle("test")
+    //     .addLabelComponents(new LabelBuilder()
+    //         .setLabel("test")
+    //         .setTextInputComponent(new TextInputBuilder()
+    //             .setCustomId("test")
+    //             .setRequired(true)
+    //             .setStyle(TextInputStyle.Paragraph))
+    // );
 
     return new ModalBuilder()
         .setCustomId("feedback;feature_request")
