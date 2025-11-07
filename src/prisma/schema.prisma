@@ -35,12 +35,14 @@ model Quote {
     id              Int             @id @default(autoincrement())
     token           String
     creatorId       String
+    creatorUsername String // Fallback in case the user left the server and for filtering
     context         String?
+    guildId         String
     createdAt       DateTime        @default(now())
 
     statements      QuoteStatement[]
 
-    @@index([token, creatorId, createdAt])
+    @@index([token, creatorId, creatorUsername, guildId, createdAt])
 }
 
 model QuoteStatement {
@@ -49,7 +51,9 @@ model QuoteStatement {
     quote           Quote           @relation(fields: [quoteId], references: [id], onDelete: Cascade)
     text            String
     authorId        String
+    authorUsername  String // Fallback in case the user left the server and for filtering
     order           Int // Position of quote in conversation
+    guildId         String
 
-    @@index([quoteId, authorId, order])
+    @@index([quoteId, authorId, authorUsername, order, guildId])
 }

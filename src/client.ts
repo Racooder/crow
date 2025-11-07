@@ -3,7 +3,7 @@ import { debug } from "./log.js";
 
 debug("Creating discord client");
 const client = new Client({
-    intents: ["Guilds"],
+    intents: ["Guilds", "GuildMembers"],
 });
 
 export default client;

@@ -37,7 +37,9 @@ export type QuoteMinAggregateOutputType = {
   id: number | null
   token: string | null
   creatorId: string | null
+  creatorUsername: string | null
   context: string | null
+  guildId: string | null
   createdAt: Date | null
 }
 
@@ -45,7 +47,9 @@ export type QuoteMaxAggregateOutputType = {
   id: number | null
   token: string | null
   creatorId: string | null
+  creatorUsername: string | null
   context: string | null
+  guildId: string | null
   createdAt: Date | null
 }
 
@@ -53,7 +57,9 @@ export type QuoteCountAggregateOutputType = {
   id: number
   token: number
   creatorId: number
+  creatorUsername: number
   context: number
+  guildId: number
   createdAt: number
   _all: number
 }
@@ -71,7 +77,9 @@ export type QuoteMinAggregateInputType = {
   id?: true
   token?: true
   creatorId?: true
+  creatorUsername?: true
   context?: true
+  guildId?: true
   createdAt?: true
 }
 
@@ -79,7 +87,9 @@ export type QuoteMaxAggregateInputType = {
   id?: true
   token?: true
   creatorId?: true
+  creatorUsername?: true
   context?: true
+  guildId?: true
   createdAt?: true
 }
 
@@ -87,7 +97,9 @@ export type QuoteCountAggregateInputType = {
   id?: true
   token?: true
   creatorId?: true
+  creatorUsername?: true
   context?: true
+  guildId?: true
   createdAt?: true
   _all?: true
 }
@@ -182,7 +194,9 @@ export type QuoteGroupByOutputType = {
   id: number
   token: string
   creatorId: string
+  creatorUsername: string
   context: string | null
+  guildId: string
   createdAt: Date
   _count: QuoteCountAggregateOutputType | null
   _avg: QuoteAvgAggregateOutputType | null
@@ -213,7 +227,9 @@ export type QuoteWhereInput = {
   id?: Prisma.IntFilter<"Quote"> | number
   token?: Prisma.StringFilter<"Quote"> | string
   creatorId?: Prisma.StringFilter<"Quote"> | string
+  creatorUsername?: Prisma.StringFilter<"Quote"> | string
   context?: Prisma.StringNullableFilter<"Quote"> | string | null
+  guildId?: Prisma.StringFilter<"Quote"> | string
   createdAt?: Prisma.DateTimeFilter<"Quote"> | Date | string
   statements?: Prisma.QuoteStatementListRelationFilter
 }
@@ -222,7 +238,9 @@ export type QuoteOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   token?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
+  creatorUsername?: Prisma.SortOrder
   context?: Prisma.SortOrderInput | Prisma.SortOrder
+  guildId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   statements?: Prisma.QuoteStatementOrderByRelationAggregateInput
 }
@@ -234,7 +252,9 @@ export type QuoteWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.QuoteWhereInput | Prisma.QuoteWhereInput[]
   token?: Prisma.StringFilter<"Quote"> | string
   creatorId?: Prisma.StringFilter<"Quote"> | string
+  creatorUsername?: Prisma.StringFilter<"Quote"> | string
   context?: Prisma.StringNullableFilter<"Quote"> | string | null
+  guildId?: Prisma.StringFilter<"Quote"> | string
   createdAt?: Prisma.DateTimeFilter<"Quote"> | Date | string
   statements?: Prisma.QuoteStatementListRelationFilter
 }, "id">
@@ -243,7 +263,9 @@ export type QuoteOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   token?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
+  creatorUsername?: Prisma.SortOrder
   context?: Prisma.SortOrderInput | Prisma.SortOrder
+  guildId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   _count?: Prisma.QuoteCountOrderByAggregateInput
   _avg?: Prisma.QuoteAvgOrderByAggregateInput
@@ -259,14 +281,18 @@ export type QuoteScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"Quote"> | number
   token?: Prisma.StringWithAggregatesFilter<"Quote"> | string
   creatorId?: Prisma.StringWithAggregatesFilter<"Quote"> | string
+  creatorUsername?: Prisma.StringWithAggregatesFilter<"Quote"> | string
   context?: Prisma.StringNullableWithAggregatesFilter<"Quote"> | string | null
+  guildId?: Prisma.StringWithAggregatesFilter<"Quote"> | string
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Quote"> | Date | string
 }
 
 export type QuoteCreateInput = {
   token: string
   creatorId: string
+  creatorUsername: string
   context?: string | null
+  guildId: string
   createdAt?: Date | string
   statements?: Prisma.QuoteStatementCreateNestedManyWithoutQuoteInput
 }
@@ -275,7 +301,9 @@ export type QuoteUncheckedCreateInput = {
   id?: number
   token: string
   creatorId: string
+  creatorUsername: string
   context?: string | null
+  guildId: string
   createdAt?: Date | string
   statements?: Prisma.QuoteStatementUncheckedCreateNestedManyWithoutQuoteInput
 }
@@ -283,7 +311,9 @@ export type QuoteUncheckedCreateInput = {
 export type QuoteUpdateInput = {
   token?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  creatorUsername?: Prisma.StringFieldUpdateOperationsInput | string
   context?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guildId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   statements?: Prisma.QuoteStatementUpdateManyWithoutQuoteNestedInput
 }
@@ -292,7 +322,9 @@ export type QuoteUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   token?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  creatorUsername?: Prisma.StringFieldUpdateOperationsInput | string
   context?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guildId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   statements?: Prisma.QuoteStatementUncheckedUpdateManyWithoutQuoteNestedInput
 }
@@ -301,14 +333,18 @@ export type QuoteCreateManyInput = {
   id?: number
   token: string
   creatorId: string
+  creatorUsername: string
   context?: string | null
+  guildId: string
   createdAt?: Date | string
 }
 
 export type QuoteUpdateManyMutationInput = {
   token?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  creatorUsername?: Prisma.StringFieldUpdateOperationsInput | string
   context?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guildId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -316,7 +352,9 @@ export type QuoteUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   token?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  creatorUsername?: Prisma.StringFieldUpdateOperationsInput | string
   context?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guildId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -324,7 +362,9 @@ export type QuoteCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   token?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
+  creatorUsername?: Prisma.SortOrder
   context?: Prisma.SortOrder
+  guildId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -336,7 +376,9 @@ export type QuoteMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   token?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
+  creatorUsername?: Prisma.SortOrder
   context?: Prisma.SortOrder
+  guildId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -344,7 +386,9 @@ export type QuoteMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   token?: Prisma.SortOrder
   creatorId?: Prisma.SortOrder
+  creatorUsername?: Prisma.SortOrder
   context?: Prisma.SortOrder
+  guildId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
 }
 
@@ -378,7 +422,9 @@ export type QuoteUpdateOneRequiredWithoutStatementsNestedInput = {
 export type QuoteCreateWithoutStatementsInput = {
   token: string
   creatorId: string
+  creatorUsername: string
   context?: string | null
+  guildId: string
   createdAt?: Date | string
 }
 
@@ -386,7 +432,9 @@ export type QuoteUncheckedCreateWithoutStatementsInput = {
   id?: number
   token: string
   creatorId: string
+  creatorUsername: string
   context?: string | null
+  guildId: string
   createdAt?: Date | string
 }
 
@@ -409,7 +457,9 @@ export type QuoteUpdateToOneWithWhereWithoutStatementsInput = {
 export type QuoteUpdateWithoutStatementsInput = {
   token?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  creatorUsername?: Prisma.StringFieldUpdateOperationsInput | string
   context?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guildId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -417,7 +467,9 @@ export type QuoteUncheckedUpdateWithoutStatementsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   token?: Prisma.StringFieldUpdateOperationsInput | string
   creatorId?: Prisma.StringFieldUpdateOperationsInput | string
+  creatorUsername?: Prisma.StringFieldUpdateOperationsInput | string
   context?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  guildId?: Prisma.StringFieldUpdateOperationsInput | string
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
@@ -456,7 +508,9 @@ export type QuoteSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   id?: boolean
   token?: boolean
   creatorId?: boolean
+  creatorUsername?: boolean
   context?: boolean
+  guildId?: boolean
   createdAt?: boolean
   statements?: boolean | Prisma.Quote$statementsArgs<ExtArgs>
   _count?: boolean | Prisma.QuoteCountOutputTypeDefaultArgs<ExtArgs>
@@ -466,7 +520,9 @@ export type QuoteSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   token?: boolean
   creatorId?: boolean
+  creatorUsername?: boolean
   context?: boolean
+  guildId?: boolean
   createdAt?: boolean
 }, ExtArgs["result"]["quote"]>
 
@@ -474,7 +530,9 @@ export type QuoteSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensi
   id?: boolean
   token?: boolean
   creatorId?: boolean
+  creatorUsername?: boolean
   context?: boolean
+  guildId?: boolean
   createdAt?: boolean
 }, ExtArgs["result"]["quote"]>
 
@@ -482,11 +540,13 @@ export type QuoteSelectScalar = {
   id?: boolean
   token?: boolean
   creatorId?: boolean
+  creatorUsername?: boolean
   context?: boolean
+  guildId?: boolean
   createdAt?: boolean
 }
 
-export type QuoteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "token" | "creatorId" | "context" | "createdAt", ExtArgs["result"]["quote"]>
+export type QuoteOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "token" | "creatorId" | "creatorUsername" | "context" | "guildId" | "createdAt", ExtArgs["result"]["quote"]>
 export type QuoteInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   statements?: boolean | Prisma.Quote$statementsArgs<ExtArgs>
   _count?: boolean | Prisma.QuoteCountOutputTypeDefaultArgs<ExtArgs>
@@ -503,7 +563,9 @@ export type $QuotePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
     id: number
     token: string
     creatorId: string
+    creatorUsername: string
     context: string | null
+    guildId: string
     createdAt: Date
   }, ExtArgs["result"]["quote"]>
   composites: {}
@@ -932,7 +994,9 @@ export interface QuoteFieldRefs {
   readonly id: Prisma.FieldRef<"Quote", 'Int'>
   readonly token: Prisma.FieldRef<"Quote", 'String'>
   readonly creatorId: Prisma.FieldRef<"Quote", 'String'>
+  readonly creatorUsername: Prisma.FieldRef<"Quote", 'String'>
   readonly context: Prisma.FieldRef<"Quote", 'String'>
+  readonly guildId: Prisma.FieldRef<"Quote", 'String'>
   readonly createdAt: Prisma.FieldRef<"Quote", 'DateTime'>
 }
     

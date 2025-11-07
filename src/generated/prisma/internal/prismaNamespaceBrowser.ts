@@ -84,7 +84,9 @@ export const QuoteScalarFieldEnum = {
   id: 'id',
   token: 'token',
   creatorId: 'creatorId',
+  creatorUsername: 'creatorUsername',
   context: 'context',
+  guildId: 'guildId',
   createdAt: 'createdAt'
 } as const
 
@@ -96,7 +98,9 @@ export const QuoteStatementScalarFieldEnum = {
   quoteId: 'quoteId',
   text: 'text',
   authorId: 'authorId',
-  order: 'order'
+  authorUsername: 'authorUsername',
+  order: 'order',
+  guildId: 'guildId'
 } as const
 
 export type QuoteStatementScalarFieldEnum = (typeof QuoteStatementScalarFieldEnum)[keyof typeof QuoteStatementScalarFieldEnum]
