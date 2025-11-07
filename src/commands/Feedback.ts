@@ -43,14 +43,6 @@ export const Feedback: Command = {
                 return Err("An unknown feedback type was selected in the feedback command.");
         }
 
-        // TODO: Remove (This is just for debugging the modal structure)
-        // console.log(modal.components[0]);
-        // console.log((modal.components[0]?.data as any as LabelBuilderData).component?.data);
-        // try {
-        //     console.log(modal.components[0]?.toJSON());
-        // } catch (error) {
-        //     console.error(error);
-        // }
         await interaction.showModal(modal);
 
         return Ok();
@@ -75,17 +67,6 @@ function createFeatureRequestModal(): ModalBuilder {
 
     const description = createBasicTextInput(feedbackModalFields.featureRequest.description, "Describe your suggested feature");
     const otherDetails = createBasicTextInput(feedbackModalFields.featureRequest.otherDetails, "Additional details (i.e. image links)", false);
-
-    // return new ModalBuilder()
-    //     .setCustomId("test")
-    //     .setTitle("test")
-    //     .addLabelComponents(new LabelBuilder()
-    //         .setLabel("test")
-    //         .setTextInputComponent(new TextInputBuilder()
-    //             .setCustomId("test")
-    //             .setRequired(true)
-    //             .setStyle(TextInputStyle.Paragraph))
-    // );
 
     return new ModalBuilder()
         .setCustomId("feedback;feature_request")
