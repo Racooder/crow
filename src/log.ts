@@ -1,6 +1,6 @@
 import { EmbedBuilder } from "discord.js";
 import { config } from "./config.js";
-import client from "./client.js";
+import { sendToChannel } from "./util/client.js";
 
 const format = {
     Reset: "\x1b[0m",
@@ -55,7 +55,7 @@ export function error(message: string | Error, preventDiscordLogging = false): v
         console.error(`${format.FgRed}${message}${format.Reset}`);
     }
 
-    if (client.isReady() && !preventDiscordLogging) {
+    if (!preventDiscordLogging) {
         errorToDiscord(message);
     }
 }
@@ -75,14 +75,8 @@ export async function errorToDiscord(message: string | Error): Promise<void> {
             .setDescription(`\`\`\`${message.stack}\`\`\``)
     }
 
-    debug("Fetching channel")
-    const channel = await client.channels.fetch(config.log_channel);
-
-    if (!channel) return error("Can't access the log channel", true);
-    if (!channel.isSendable()) return error("Can't send messages in the log channel", true);
-
     debug("Sending error message")
-    channel.send({
+    sendToChannel(config.log_channel, {
         content: `<@&${config.log_role}>`,
         embeds: [embed],
     });

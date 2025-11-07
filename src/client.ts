@@ -1,6 +1,7 @@
 import { Client } from "discord.js";
-//! Can't use log here because of circular dependency
+import { debug } from "./log.js";
 
+debug("Creating discord client");
 const client = new Client({
     intents: ["Guilds"],
 });

@@ -20,6 +20,7 @@ type Config = {
     testing_guild_id: string;
     log_channel: string;
     log_role: string;
+    feedback_channel: string;
 
     discord_token: string;
     client_id: string;
@@ -32,6 +33,7 @@ function loadConfig(): Config {
         testing_guild_id: process.env['TESTING_GUILD_ID'] as string,
         log_channel: process.env['LOG_CHANNEL'] as string,
         log_role: process.env['LOG_ROLE'] as string,
+        feedback_channel: process.env['FEEDBACK_CHANNEL'] as string,
 
         discord_token: process.env['DISCORD_TOKEN'] as string,
         client_id: process.env['CLIENT_ID'] as string,
