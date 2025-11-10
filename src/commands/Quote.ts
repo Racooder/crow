@@ -7,6 +7,7 @@ import colors from "../colors.js";
 import type { QuoteMeta, QuoteStatement } from "../generated/prisma/client.js";
 import { isUserInGuild } from "../util/guild.js";
 import prisma from "../prisma.js";
+import type { PopulatedQuote } from "../util/prisma.js";
 
 export const Quote: Command = {
     data: {
@@ -18,11 +19,15 @@ export const Quote: Command = {
                 name: "add",
                 description: "Add a new quote",
                 type: ApplicationCommandOptionType.Subcommand,
-            },
-            {
-                name: "conversation",
-                description: "Add a conversation quote",
-                type: ApplicationCommandOptionType.Subcommand,
+                options: [
+                    {
+                        name: "conversation_length",
+                        description: "Length of the conversation (number of statements)",
+                        type: ApplicationCommandOptionType.Integer,
+                        min_value: 2,
+                        required: false,
+                    }
+                ],
             },
             {
                 name: "remove",
@@ -62,19 +67,16 @@ export const Quote: Command = {
             handler: async function execute(interaction: ChatInputCommandInteraction): Promise<Result> {
                 debug("Handling 'quote add' command");
 
+                const conversationLength = interaction.options.getInteger("conversation_length", false);
+
+                if (conversationLength !== null && conversationLength >= 2) {
+                    const modal = createConversationMetaModal(conversationLength);
+                    await interaction.showModal(modal);
+                    return Ok();
+                }
+
                 const modal = createAddModal();
                 await interaction.showModal(modal);
-
-                return Ok();
-            }
-        },
-        conversation: {
-            handler: async function execute(interaction: ChatInputCommandInteraction): Promise<Result> {
-                debug("Handling 'quote conversation' command");
-
-                const modal = createConversationMetaModal();
-                await interaction.showModal(modal);
-
                 return Ok();
             }
         },
@@ -175,11 +177,11 @@ export function createQuoteAuthorInput(defaultUserId?: string): LabelBuilder {
         .setUserSelectMenuComponent(input);
 }
 
-function createConversationMetaModal(): ModalBuilder {
+function createConversationMetaModal(conversationLength: number): ModalBuilder {
     const quoteContext = createBasicTextInput(quoteModalFields.add.quoteContext, "The context of the quote", false);
 
     return new ModalBuilder()
-        .setCustomId(`quote;conversation;meta`)
+        .setCustomId(`quote;conversation;meta;${conversationLength}`)
         .setTitle("Add Conversation Quote Metadata")
         .addLabelComponents(quoteContext);
 }
@@ -222,7 +224,7 @@ function createDeleteConfirmButtons(quoteId: string): ActionRowBuilder<ButtonBui
         .addComponents(confirmButton, cancelButton);
 }
 
-function getQuoteByToken(token: string) {
+function getQuoteByToken(token: string): Promise<PopulatedQuote | null> {
     return prisma.quoteMeta.findUnique({
         where: {
             token: token,
@@ -238,8 +240,23 @@ function checkQuoteEditPermissions(quote: QuoteMeta, user: User): boolean {
     // TODO: Allow server admins to edit any quote in their server
 }
 
-function createListEmbed(quotes: QuoteMeta[]): EmbedBuilder {
+export type QuoteListFilter = {
+    guildId: string;
+    creatorId?: string;
+    creatorUsername?: string;
+    contextContains?: string;
+    createdAfter?: Date;
+    createdBefore?: Date;
+    textContains?: string;
+    authorId?: string;
+    authorUsername?: string;
+    isConversation?: boolean;
+}
 
+export async function createListEmbed(page: number, filter: QuoteListFilter): Promise<EmbedBuilder> {
+    const quotes = await prisma.quoteMeta.findMany({
+        
+    });
 }
 
 function createEditMetaModal(quote: QuoteMeta): ModalBuilder {

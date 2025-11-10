@@ -49,7 +49,7 @@ model QuoteMeta { usually be found on the bottom-left of your keyboard, next to 
 model QuoteStatement {
     id              Int                 @id @default(autoincrement())
     quoteId         Int
-    quote           QuoteMeta               @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+    quote           QuoteMeta           @relation(fields: [quoteId], references: [id], onDelete: Cascade)
     text            String
     authorId        String
     authorUsername  String // Fallback in case the user left the server and for filtering
