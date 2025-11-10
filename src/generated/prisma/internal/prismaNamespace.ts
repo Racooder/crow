@@ -390,7 +390,7 @@ type FieldRefInputType<Model, FieldType> = Model extends never ? never : FieldRe
 
 export const ModelName = {
   Feedback: 'Feedback',
-  Quote: 'Quote',
+  QuoteMeta: 'QuoteMeta',
   QuoteStatement: 'QuoteStatement'
 } as const
 
@@ -407,7 +407,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "feedback" | "quote" | "quoteStatement"
+    modelProps: "feedback" | "quoteMeta" | "quoteStatement"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -485,77 +485,77 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
-    Quote: {
-      payload: Prisma.$QuotePayload<ExtArgs>
-      fields: Prisma.QuoteFieldRefs
+    QuoteMeta: {
+      payload: Prisma.$QuoteMetaPayload<ExtArgs>
+      fields: Prisma.QuoteMetaFieldRefs
       operations: {
         findUnique: {
-          args: Prisma.QuoteFindUniqueArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuotePayload> | null
+          args: Prisma.QuoteMetaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuoteMetaPayload> | null
         }
         findUniqueOrThrow: {
-          args: Prisma.QuoteFindUniqueOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuotePayload>
+          args: Prisma.QuoteMetaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuoteMetaPayload>
         }
         findFirst: {
-          args: Prisma.QuoteFindFirstArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuotePayload> | null
+          args: Prisma.QuoteMetaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuoteMetaPayload> | null
         }
         findFirstOrThrow: {
-          args: Prisma.QuoteFindFirstOrThrowArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuotePayload>
+          args: Prisma.QuoteMetaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuoteMetaPayload>
         }
         findMany: {
-          args: Prisma.QuoteFindManyArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuotePayload>[]
+          args: Prisma.QuoteMetaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuoteMetaPayload>[]
         }
         create: {
-          args: Prisma.QuoteCreateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuotePayload>
+          args: Prisma.QuoteMetaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuoteMetaPayload>
         }
         createMany: {
-          args: Prisma.QuoteCreateManyArgs<ExtArgs>
+          args: Prisma.QuoteMetaCreateManyArgs<ExtArgs>
           result: BatchPayload
         }
         createManyAndReturn: {
-          args: Prisma.QuoteCreateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuotePayload>[]
+          args: Prisma.QuoteMetaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuoteMetaPayload>[]
         }
         delete: {
-          args: Prisma.QuoteDeleteArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuotePayload>
+          args: Prisma.QuoteMetaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuoteMetaPayload>
         }
         update: {
-          args: Prisma.QuoteUpdateArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuotePayload>
+          args: Prisma.QuoteMetaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuoteMetaPayload>
         }
         deleteMany: {
-          args: Prisma.QuoteDeleteManyArgs<ExtArgs>
+          args: Prisma.QuoteMetaDeleteManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateMany: {
-          args: Prisma.QuoteUpdateManyArgs<ExtArgs>
+          args: Prisma.QuoteMetaUpdateManyArgs<ExtArgs>
           result: BatchPayload
         }
         updateManyAndReturn: {
-          args: Prisma.QuoteUpdateManyAndReturnArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuotePayload>[]
+          args: Prisma.QuoteMetaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuoteMetaPayload>[]
         }
         upsert: {
-          args: Prisma.QuoteUpsertArgs<ExtArgs>
-          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuotePayload>
+          args: Prisma.QuoteMetaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$QuoteMetaPayload>
         }
         aggregate: {
-          args: Prisma.QuoteAggregateArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.AggregateQuote>
+          args: Prisma.QuoteMetaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateQuoteMeta>
         }
         groupBy: {
-          args: Prisma.QuoteGroupByArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.QuoteGroupByOutputType>[]
+          args: Prisma.QuoteMetaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.QuoteMetaGroupByOutputType>[]
         }
         count: {
-          args: Prisma.QuoteCountArgs<ExtArgs>
-          result: runtime.Types.Utils.Optional<Prisma.QuoteCountAggregateOutputType> | number
+          args: Prisma.QuoteMetaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.QuoteMetaCountAggregateOutputType> | number
         }
       }
     }
@@ -683,7 +683,7 @@ export const FeedbackScalarFieldEnum = {
 export type FeedbackScalarFieldEnum = (typeof FeedbackScalarFieldEnum)[keyof typeof FeedbackScalarFieldEnum]
 
 
-export const QuoteScalarFieldEnum = {
+export const QuoteMetaScalarFieldEnum = {
   id: 'id',
   token: 'token',
   creatorId: 'creatorId',
@@ -693,7 +693,7 @@ export const QuoteScalarFieldEnum = {
   createdAt: 'createdAt'
 } as const
 
-export type QuoteScalarFieldEnum = (typeof QuoteScalarFieldEnum)[keyof typeof QuoteScalarFieldEnum]
+export type QuoteMetaScalarFieldEnum = (typeof QuoteMetaScalarFieldEnum)[keyof typeof QuoteMetaScalarFieldEnum]
 
 
 export const QuoteStatementScalarFieldEnum = {
@@ -702,8 +702,7 @@ export const QuoteStatementScalarFieldEnum = {
   text: 'text',
   authorId: 'authorId',
   authorUsername: 'authorUsername',
-  order: 'order',
-  guildId: 'guildId'
+  order: 'order'
 } as const
 
 export type QuoteStatementScalarFieldEnum = (typeof QuoteStatementScalarFieldEnum)[keyof typeof QuoteStatementScalarFieldEnum]
@@ -896,7 +895,7 @@ export interface PrismaClientOptions {
 }
 export type GlobalOmitConfig = {
   feedback?: Prisma.FeedbackOmit
-  quote?: Prisma.QuoteOmit
+  quoteMeta?: Prisma.QuoteMetaOmit
   quoteStatement?: Prisma.QuoteStatementOmit
 }
 

@@ -44,7 +44,6 @@ export type QuoteStatementMinAggregateOutputType = {
   authorId: string | null
   authorUsername: string | null
   order: number | null
-  guildId: string | null
 }
 
 export type QuoteStatementMaxAggregateOutputType = {
@@ -54,7 +53,6 @@ export type QuoteStatementMaxAggregateOutputType = {
   authorId: string | null
   authorUsername: string | null
   order: number | null
-  guildId: string | null
 }
 
 export type QuoteStatementCountAggregateOutputType = {
@@ -64,7 +62,6 @@ export type QuoteStatementCountAggregateOutputType = {
   authorId: number
   authorUsername: number
   order: number
-  guildId: number
   _all: number
 }
 
@@ -88,7 +85,6 @@ export type QuoteStatementMinAggregateInputType = {
   authorId?: true
   authorUsername?: true
   order?: true
-  guildId?: true
 }
 
 export type QuoteStatementMaxAggregateInputType = {
@@ -98,7 +94,6 @@ export type QuoteStatementMaxAggregateInputType = {
   authorId?: true
   authorUsername?: true
   order?: true
-  guildId?: true
 }
 
 export type QuoteStatementCountAggregateInputType = {
@@ -108,7 +103,6 @@ export type QuoteStatementCountAggregateInputType = {
   authorId?: true
   authorUsername?: true
   order?: true
-  guildId?: true
   _all?: true
 }
 
@@ -205,7 +199,6 @@ export type QuoteStatementGroupByOutputType = {
   authorId: string
   authorUsername: string
   order: number
-  guildId: string
   _count: QuoteStatementCountAggregateOutputType | null
   _avg: QuoteStatementAvgAggregateOutputType | null
   _sum: QuoteStatementSumAggregateOutputType | null
@@ -238,8 +231,7 @@ export type QuoteStatementWhereInput = {
   authorId?: Prisma.StringFilter<"QuoteStatement"> | string
   authorUsername?: Prisma.StringFilter<"QuoteStatement"> | string
   order?: Prisma.IntFilter<"QuoteStatement"> | number
-  guildId?: Prisma.StringFilter<"QuoteStatement"> | string
-  quote?: Prisma.XOR<Prisma.QuoteScalarRelationFilter, Prisma.QuoteWhereInput>
+  quote?: Prisma.XOR<Prisma.QuoteMetaScalarRelationFilter, Prisma.QuoteMetaWhereInput>
 }
 
 export type QuoteStatementOrderByWithRelationInput = {
@@ -249,8 +241,7 @@ export type QuoteStatementOrderByWithRelationInput = {
   authorId?: Prisma.SortOrder
   authorUsername?: Prisma.SortOrder
   order?: Prisma.SortOrder
-  guildId?: Prisma.SortOrder
-  quote?: Prisma.QuoteOrderByWithRelationInput
+  quote?: Prisma.QuoteMetaOrderByWithRelationInput
 }
 
 export type QuoteStatementWhereUniqueInput = Prisma.AtLeast<{
@@ -263,8 +254,7 @@ export type QuoteStatementWhereUniqueInput = Prisma.AtLeast<{
   authorId?: Prisma.StringFilter<"QuoteStatement"> | string
   authorUsername?: Prisma.StringFilter<"QuoteStatement"> | string
   order?: Prisma.IntFilter<"QuoteStatement"> | number
-  guildId?: Prisma.StringFilter<"QuoteStatement"> | string
-  quote?: Prisma.XOR<Prisma.QuoteScalarRelationFilter, Prisma.QuoteWhereInput>
+  quote?: Prisma.XOR<Prisma.QuoteMetaScalarRelationFilter, Prisma.QuoteMetaWhereInput>
 }, "id">
 
 export type QuoteStatementOrderByWithAggregationInput = {
@@ -274,7 +264,6 @@ export type QuoteStatementOrderByWithAggregationInput = {
   authorId?: Prisma.SortOrder
   authorUsername?: Prisma.SortOrder
   order?: Prisma.SortOrder
-  guildId?: Prisma.SortOrder
   _count?: Prisma.QuoteStatementCountOrderByAggregateInput
   _avg?: Prisma.QuoteStatementAvgOrderByAggregateInput
   _max?: Prisma.QuoteStatementMaxOrderByAggregateInput
@@ -292,7 +281,6 @@ export type QuoteStatementScalarWhereWithAggregatesInput = {
   authorId?: Prisma.StringWithAggregatesFilter<"QuoteStatement"> | string
   authorUsername?: Prisma.StringWithAggregatesFilter<"QuoteStatement"> | string
   order?: Prisma.IntWithAggregatesFilter<"QuoteStatement"> | number
-  guildId?: Prisma.StringWithAggregatesFilter<"QuoteStatement"> | string
 }
 
 export type QuoteStatementCreateInput = {
@@ -300,8 +288,7 @@ export type QuoteStatementCreateInput = {
   authorId: string
   authorUsername: string
   order: number
-  guildId: string
-  quote: Prisma.QuoteCreateNestedOneWithoutStatementsInput
+  quote: Prisma.QuoteMetaCreateNestedOneWithoutStatementsInput
 }
 
 export type QuoteStatementUncheckedCreateInput = {
@@ -311,7 +298,6 @@ export type QuoteStatementUncheckedCreateInput = {
   authorId: string
   authorUsername: string
   order: number
-  guildId: string
 }
 
 export type QuoteStatementUpdateInput = {
@@ -319,8 +305,7 @@ export type QuoteStatementUpdateInput = {
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
   authorUsername?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
-  guildId?: Prisma.StringFieldUpdateOperationsInput | string
-  quote?: Prisma.QuoteUpdateOneRequiredWithoutStatementsNestedInput
+  quote?: Prisma.QuoteMetaUpdateOneRequiredWithoutStatementsNestedInput
 }
 
 export type QuoteStatementUncheckedUpdateInput = {
@@ -330,7 +315,6 @@ export type QuoteStatementUncheckedUpdateInput = {
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
   authorUsername?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
-  guildId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type QuoteStatementCreateManyInput = {
@@ -340,7 +324,6 @@ export type QuoteStatementCreateManyInput = {
   authorId: string
   authorUsername: string
   order: number
-  guildId: string
 }
 
 export type QuoteStatementUpdateManyMutationInput = {
@@ -348,7 +331,6 @@ export type QuoteStatementUpdateManyMutationInput = {
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
   authorUsername?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
-  guildId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type QuoteStatementUncheckedUpdateManyInput = {
@@ -358,7 +340,6 @@ export type QuoteStatementUncheckedUpdateManyInput = {
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
   authorUsername?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
-  guildId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type QuoteStatementListRelationFilter = {
@@ -378,7 +359,6 @@ export type QuoteStatementCountOrderByAggregateInput = {
   authorId?: Prisma.SortOrder
   authorUsername?: Prisma.SortOrder
   order?: Prisma.SortOrder
-  guildId?: Prisma.SortOrder
 }
 
 export type QuoteStatementAvgOrderByAggregateInput = {
@@ -394,7 +374,6 @@ export type QuoteStatementMaxOrderByAggregateInput = {
   authorId?: Prisma.SortOrder
   authorUsername?: Prisma.SortOrder
   order?: Prisma.SortOrder
-  guildId?: Prisma.SortOrder
 }
 
 export type QuoteStatementMinOrderByAggregateInput = {
@@ -404,7 +383,6 @@ export type QuoteStatementMinOrderByAggregateInput = {
   authorId?: Prisma.SortOrder
   authorUsername?: Prisma.SortOrder
   order?: Prisma.SortOrder
-  guildId?: Prisma.SortOrder
 }
 
 export type QuoteStatementSumOrderByAggregateInput = {
@@ -460,7 +438,6 @@ export type QuoteStatementCreateWithoutQuoteInput = {
   authorId: string
   authorUsername: string
   order: number
-  guildId: string
 }
 
 export type QuoteStatementUncheckedCreateWithoutQuoteInput = {
@@ -469,7 +446,6 @@ export type QuoteStatementUncheckedCreateWithoutQuoteInput = {
   authorId: string
   authorUsername: string
   order: number
-  guildId: string
 }
 
 export type QuoteStatementCreateOrConnectWithoutQuoteInput = {
@@ -508,7 +484,6 @@ export type QuoteStatementScalarWhereInput = {
   authorId?: Prisma.StringFilter<"QuoteStatement"> | string
   authorUsername?: Prisma.StringFilter<"QuoteStatement"> | string
   order?: Prisma.IntFilter<"QuoteStatement"> | number
-  guildId?: Prisma.StringFilter<"QuoteStatement"> | string
 }
 
 export type QuoteStatementCreateManyQuoteInput = {
@@ -517,7 +492,6 @@ export type QuoteStatementCreateManyQuoteInput = {
   authorId: string
   authorUsername: string
   order: number
-  guildId: string
 }
 
 export type QuoteStatementUpdateWithoutQuoteInput = {
@@ -525,7 +499,6 @@ export type QuoteStatementUpdateWithoutQuoteInput = {
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
   authorUsername?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
-  guildId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type QuoteStatementUncheckedUpdateWithoutQuoteInput = {
@@ -534,7 +507,6 @@ export type QuoteStatementUncheckedUpdateWithoutQuoteInput = {
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
   authorUsername?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
-  guildId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 export type QuoteStatementUncheckedUpdateManyWithoutQuoteInput = {
@@ -543,7 +515,6 @@ export type QuoteStatementUncheckedUpdateManyWithoutQuoteInput = {
   authorId?: Prisma.StringFieldUpdateOperationsInput | string
   authorUsername?: Prisma.StringFieldUpdateOperationsInput | string
   order?: Prisma.IntFieldUpdateOperationsInput | number
-  guildId?: Prisma.StringFieldUpdateOperationsInput | string
 }
 
 
@@ -555,8 +526,7 @@ export type QuoteStatementSelect<ExtArgs extends runtime.Types.Extensions.Intern
   authorId?: boolean
   authorUsername?: boolean
   order?: boolean
-  guildId?: boolean
-  quote?: boolean | Prisma.QuoteDefaultArgs<ExtArgs>
+  quote?: boolean | Prisma.QuoteMetaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["quoteStatement"]>
 
 export type QuoteStatementSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -566,8 +536,7 @@ export type QuoteStatementSelectCreateManyAndReturn<ExtArgs extends runtime.Type
   authorId?: boolean
   authorUsername?: boolean
   order?: boolean
-  guildId?: boolean
-  quote?: boolean | Prisma.QuoteDefaultArgs<ExtArgs>
+  quote?: boolean | Prisma.QuoteMetaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["quoteStatement"]>
 
 export type QuoteStatementSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -577,8 +546,7 @@ export type QuoteStatementSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
   authorId?: boolean
   authorUsername?: boolean
   order?: boolean
-  guildId?: boolean
-  quote?: boolean | Prisma.QuoteDefaultArgs<ExtArgs>
+  quote?: boolean | Prisma.QuoteMetaDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["quoteStatement"]>
 
 export type QuoteStatementSelectScalar = {
@@ -588,24 +556,23 @@ export type QuoteStatementSelectScalar = {
   authorId?: boolean
   authorUsername?: boolean
   order?: boolean
-  guildId?: boolean
 }
 
-export type QuoteStatementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "quoteId" | "text" | "authorId" | "authorUsername" | "order" | "guildId", ExtArgs["result"]["quoteStatement"]>
+export type QuoteStatementOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "quoteId" | "text" | "authorId" | "authorUsername" | "order", ExtArgs["result"]["quoteStatement"]>
 export type QuoteStatementInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  quote?: boolean | Prisma.QuoteDefaultArgs<ExtArgs>
+  quote?: boolean | Prisma.QuoteMetaDefaultArgs<ExtArgs>
 }
 export type QuoteStatementIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  quote?: boolean | Prisma.QuoteDefaultArgs<ExtArgs>
+  quote?: boolean | Prisma.QuoteMetaDefaultArgs<ExtArgs>
 }
 export type QuoteStatementIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  quote?: boolean | Prisma.QuoteDefaultArgs<ExtArgs>
+  quote?: boolean | Prisma.QuoteMetaDefaultArgs<ExtArgs>
 }
 
 export type $QuoteStatementPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "QuoteStatement"
   objects: {
-    quote: Prisma.$QuotePayload<ExtArgs>
+    quote: Prisma.$QuoteMetaPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -614,7 +581,6 @@ export type $QuoteStatementPayload<ExtArgs extends runtime.Types.Extensions.Inte
     authorId: string
     authorUsername: string
     order: number
-    guildId: string
   }, ExtArgs["result"]["quoteStatement"]>
   composites: {}
 }
@@ -1009,7 +975,7 @@ readonly fields: QuoteStatementFieldRefs;
  */
 export interface Prisma__QuoteStatementClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  quote<T extends Prisma.QuoteDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.QuoteDefaultArgs<ExtArgs>>): Prisma.Prisma__QuoteClient<runtime.Types.Result.GetResult<Prisma.$QuotePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  quote<T extends Prisma.QuoteMetaDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.QuoteMetaDefaultArgs<ExtArgs>>): Prisma.Prisma__QuoteMetaClient<runtime.Types.Result.GetResult<Prisma.$QuoteMetaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1045,7 +1011,6 @@ export interface QuoteStatementFieldRefs {
   readonly authorId: Prisma.FieldRef<"QuoteStatement", 'String'>
   readonly authorUsername: Prisma.FieldRef<"QuoteStatement", 'String'>
   readonly order: Prisma.FieldRef<"QuoteStatement", 'Int'>
-  readonly guildId: Prisma.FieldRef<"QuoteStatement", 'String'>
 }
     
 

@@ -22,10 +22,10 @@ export * from './enums.js';
  */
 export type Feedback = Prisma.FeedbackModel
 /**
- * Model Quote
+ * Model QuoteMeta
  * 
  */
-export type Quote = Prisma.QuoteModel
+export type QuoteMeta = Prisma.QuoteMetaModel
 /**
  * Model QuoteStatement
  * 

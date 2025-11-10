@@ -4,7 +4,7 @@ import { debug } from "../log.js";
 /**
  * @param required (default = true)
  */
-export function createBasicTextInput(id: string, labelText: string, required = true): LabelBuilder {
+export function createBasicTextInput(id: string, labelText: string, required: boolean): LabelBuilder {
     debug(`Creating basic text input: id='${id}', label='${labelText}', required=${required}`);
 
     const input = new TextInputBuilder()

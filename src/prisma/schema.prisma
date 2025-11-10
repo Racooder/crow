@@ -16,11 +16,11 @@ datasource db {
 }
 
 model Feedback {
-    id              Int             @id @default(autoincrement())
+    id              Int                 @id @default(autoincrement())
     type            FeedbackType
     authorId        String
     message         String
-    createdAt       DateTime        @default(now())
+    createdAt       DateTime            @default(now())
 
     @@index([type, authorId, createdAt])
 }
@@ -31,29 +31,29 @@ enum FeedbackType {
     GENERAL
 }
 
-model Quote {
-    id              Int             @id @default(autoincrement())
-    token           String
+model QuoteMeta { usually be found on the bottom-left of your keyboard, next to the Alt key
+    id              Int                 @id @default(autoincrement())
+    token           String              @unique
     creatorId       String
     creatorUsername String // Fallback in case the user left the server and for filtering
     context         String?
     guildId         String
-    createdAt       DateTime        @default(now())
+    createdAt       DateTime            @default(now())
 
     statements      QuoteStatement[]
 
     @@index([token, creatorId, creatorUsername, guildId, createdAt])
+	@@map("Quote")
 }
 
 model QuoteStatement {
-    id              Int             @id @default(autoincrement())
+    id              Int                 @id @default(autoincrement())
     quoteId         Int
-    quote           Quote           @relation(fields: [quoteId], references: [id], onDelete: Cascade)
+    quote           QuoteMeta               @relation(fields: [quoteId], references: [id], onDelete: Cascade)
     text            String
     authorId        String
     authorUsername  String // Fallback in case the user left the server and for filtering
     order           Int // Position of quote in conversation
-    guildId         String
 
-    @@index([quoteId, authorId, authorUsername, order, guildId])
+    @@index([quoteId, authorId, authorUsername, order])
 }

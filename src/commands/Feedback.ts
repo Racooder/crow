@@ -1,4 +1,4 @@
-import { ApplicationCommandOptionType, ApplicationCommandType, ChatInputCommandInteraction, LabelBuilder, ModalBuilder, TextInputBuilder, TextInputStyle, type LabelBuilderData } from "discord.js";
+import { ApplicationCommandOptionType, ApplicationCommandType, ChatInputCommandInteraction, ModalBuilder } from "discord.js";
 import type { Command } from "./index.js";
 import { debug } from "../log.js";
 import { Err, Ok, type Result } from "../result.js";
@@ -52,8 +52,8 @@ export const Feedback: Command = {
 function createBugReportModal(): ModalBuilder {
     debug("Creating bug report feedback modal");
 
-    const expectedBehavior = createBasicTextInput(feedbackModalFields.bugReport.expectedBehavior, "Explain what you expected to happen");
-    const actualBehavior = createBasicTextInput(feedbackModalFields.bugReport.actualBehavior, "Explain what actually happened");
+    const expectedBehavior = createBasicTextInput(feedbackModalFields.bugReport.expectedBehavior, "Explain what you expected to happen", true);
+    const actualBehavior = createBasicTextInput(feedbackModalFields.bugReport.actualBehavior, "Explain what actually happened", true);
     const stepsToReproduce = createBasicTextInput(feedbackModalFields.bugReport.stepsToReproduce, "Steps to reproduce the issue", false);
 
     return new ModalBuilder()
@@ -65,7 +65,7 @@ function createBugReportModal(): ModalBuilder {
 function createFeatureRequestModal(): ModalBuilder {
     debug("Creating feature request feedback modal");
 
-    const description = createBasicTextInput(feedbackModalFields.featureRequest.description, "Describe your suggested feature");
+    const description = createBasicTextInput(feedbackModalFields.featureRequest.description, "Describe your suggested feature", true);
     const otherDetails = createBasicTextInput(feedbackModalFields.featureRequest.otherDetails, "Additional details (i.e. image links)", false);
 
     return new ModalBuilder()
@@ -77,7 +77,7 @@ function createFeatureRequestModal(): ModalBuilder {
 function createGeneralFeedbackModal(): ModalBuilder {
     debug("Creating general feedback modal");
 
-    const description = createBasicTextInput(feedbackModalFields.generalFeedback.description, "Write your feedback here");
+    const description = createBasicTextInput(feedbackModalFields.generalFeedback.description, "Write your feedback here", true);
 
     return new ModalBuilder()
         .setCustomId("feedback;general_feedback")

@@ -1,4 +1,4 @@
-import { Embed, EmbedBuilder, MessageFlags, ModalSubmitInteraction, User, type InteractionReplyOptions } from "discord.js";
+import { EmbedBuilder, MessageFlags, ModalSubmitInteraction, User, type InteractionReplyOptions } from "discord.js";
 import type { Modal } from "./index.js";
 import { debug } from "../log.js";
 import { Ok, type Result } from "../result.js";

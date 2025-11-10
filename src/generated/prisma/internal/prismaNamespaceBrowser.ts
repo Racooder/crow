@@ -49,7 +49,7 @@ export const AnyNull = runtime.objectEnumValues.instances.AnyNull
 
 export const ModelName = {
   Feedback: 'Feedback',
-  Quote: 'Quote',
+  QuoteMeta: 'QuoteMeta',
   QuoteStatement: 'QuoteStatement'
 } as const
 
@@ -80,7 +80,7 @@ export const FeedbackScalarFieldEnum = {
 export type FeedbackScalarFieldEnum = (typeof FeedbackScalarFieldEnum)[keyof typeof FeedbackScalarFieldEnum]
 
 
-export const QuoteScalarFieldEnum = {
+export const QuoteMetaScalarFieldEnum = {
   id: 'id',
   token: 'token',
   creatorId: 'creatorId',
@@ -90,7 +90,7 @@ export const QuoteScalarFieldEnum = {
   createdAt: 'createdAt'
 } as const
 
-export type QuoteScalarFieldEnum = (typeof QuoteScalarFieldEnum)[keyof typeof QuoteScalarFieldEnum]
+export type QuoteMetaScalarFieldEnum = (typeof QuoteMetaScalarFieldEnum)[keyof typeof QuoteMetaScalarFieldEnum]
 
 
 export const QuoteStatementScalarFieldEnum = {
@@ -99,8 +99,7 @@ export const QuoteStatementScalarFieldEnum = {
   text: 'text',
   authorId: 'authorId',
   authorUsername: 'authorUsername',
-  order: 'order',
-  guildId: 'guildId'
+  order: 'order'
 } as const
 
 export type QuoteStatementScalarFieldEnum = (typeof QuoteStatementScalarFieldEnum)[keyof typeof QuoteStatementScalarFieldEnum]

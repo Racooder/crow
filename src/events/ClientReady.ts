@@ -1,7 +1,7 @@
 import { ActivityType, Events } from "discord.js";
 import type { EventListener } from "./index.js";
 import { getCommandsData } from "../commands/index.js";
-// import { deployCommands } from "../deployCommands.js";
+// import { deployCommands } from "../deployCommands.js"; // TODO: Use or remove
 // import { config } from "../config.js";
 import { debug, info, success } from "../log.js";
 import { ClientApplication } from 'discord.js';
