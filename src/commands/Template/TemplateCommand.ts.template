@@ -1,0 +1,13 @@
+import { ApplicationCommandType } from "discord.js";
+import type { Command } from "../commands.js";
+import templateCommandHandler from "./commandHandlers/template.js";
+
+export default {
+    data: {
+        name: "template",
+        description: "A template command",
+        type: ApplicationCommandType.ChatInput,
+    },
+    handler: templateCommandHandler,
+    subcommands: {},
+} as Command;

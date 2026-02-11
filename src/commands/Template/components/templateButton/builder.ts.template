@@ -1,0 +1,9 @@
+import { ButtonBuilder, ButtonStyle } from "discord.js";
+import { debug } from "../../../../log.js";
+
+export default function createTemplateButton(): ButtonBuilder {
+    debug("Creating template button");
+    return new ButtonBuilder()
+        .setStyle(ButtonStyle.Link)
+        .setLabel("Template");
+}

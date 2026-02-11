@@ -1,7 +1,7 @@
 import { EmbedBuilder } from "discord.js";
 import { config } from "./config.js";
 import { sendToChannel } from "./util/client.js";
-import colors from "./colors.js";
+import Colors from "./Colors.js";
 
 const format = {
     Reset: "\x1b[0m",
@@ -74,7 +74,7 @@ export async function errorToDiscord(message: string | Error): Promise<void> {
         embed
             .setTitle(`${message.name}: ${message.message}`)
             .setDescription(`\`\`\`${message.stack}\`\`\``)
-            .setColor(colors.ERROR_EMBED)
+            .setColor(Colors.ERROR_EMBED)
     }
 
     debug("Sending error message")

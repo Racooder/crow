@@ -1,0 +1,9 @@
+import { ChatInputCommandInteraction } from "discord.js";
+import { debug } from "../../../log.js";
+import { Ok, type Result } from "../../../result.js";
+
+export default async function templateCommandHandler(interaction: ChatInputCommandInteraction): Promise<Result> {
+    debug(`Handling 'template' command`);
+    // Command handling logic goes here
+    return Ok();
+}

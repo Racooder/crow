@@ -1,12 +1,15 @@
 import { BaseInteraction, Events, ModalSubmitInteraction, type ChatInputCommandInteraction } from "discord.js";
 import type { EventListener } from "./index.js";
-import { COMMANDS, type Command, type CommandHandler } from "../commands/index.js";
+import { COMMANDS, type Command, type CommandHandler } from "../commands/commands.js";
 import { debug, error } from "../log.js";
 import { replyHowever } from "../util/interaction.js";
-import { MODALS, type Modal, type ModalHandler, type SubModal } from "../modals/index.js";
+import { MODALS, type Modal, type ModalHandler, type SubModal } from "../commands/modals.js";
 import { Exception } from "../exception.js";
 import client from "../client.js";
 import { Err, isErr, Ok, type Result } from "../result.js";
+
+// TODO: Refactor this file, it's getting pretty big and unwieldy. Maybe split into separate handlers for commands and modals?
+// TODO: Subcommands are not optional anymore so adjust the logic accordingly
 
 const COMMAND_NOT_RECOGNIZED_MESSAGE = "This command is not recognized by the bot.";
 const MODAL_NOT_RECOGNIZED_MESSAGE = "This modal is not recognized by the bot.";
@@ -116,7 +119,7 @@ async function runCommandHandler(interaction: ChatInputCommandInteraction, handl
     }
 }
 
-export function generateCommandString(name: string, subcommandGroup?: string, subcommand?: string): string {
+function generateCommandString(name: string, subcommandGroup?: string, subcommand?: string): string {
     if (subcommand && subcommandGroup) return `${name}.${subcommandGroup}.${subcommand}`;
     if (subcommand) return `${name}.${subcommand}`;
     return name;

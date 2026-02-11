@@ -1,0 +1,11 @@
+import { EmbedBuilder } from "discord.js";
+import { debug } from "../../../log.js";
+import Colors from "../../../Colors.js";
+
+export default function createTemplateEmbed(): EmbedBuilder {
+    debug("Creating template embed");
+    return new EmbedBuilder()
+        .setColor(Colors.TEMPLATE_EMBED)
+        .setTitle("Template Embed")
+        .setDescription("This is a template embed!");
+}

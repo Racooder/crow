@@ -1,34 +1,8 @@
-import { ApplicationCommandType, ChatInputCommandInteraction, EmbedBuilder, MessageFlags } from "discord.js";
-import type { Command } from "./index.js";
-import Colors from "../colors.js";
-import { debug } from "../log.js";
-import { Ok, type Result } from "../result.js";
-import client from "../client.js";
+import { EmbedBuilder } from "discord.js";
+import { debug } from "../../../log.js";
+import Colors from "../../../Colors.js";
 
-export const Ping: Command = {
-    data: {
-        name: "ping",
-        description: "Check your connection with the bot",
-        type: ApplicationCommandType.ChatInput,
-    },
-    handler: async function execute(interaction: ChatInputCommandInteraction): Promise<Result> {
-        debug("Handling 'ping' command");
-        const latency = Math.abs(Date.now() - interaction.createdTimestamp);
-        const apiLatency = client.ws.ping;
-
-        const embed = buildPingEmbed(latency, apiLatency);
-
-        debug("Sending reply");
-        await interaction.reply({
-            embeds: [embed],
-            flags: [MessageFlags.Ephemeral],
-        });
-
-        return Ok();
-    }
-}
-
-function buildPingEmbed(latency: number, apiLatency: number): EmbedBuilder {
+export default function createPingEmbed(latency: number, apiLatency: number): EmbedBuilder { // TODO: Move to embeds folder
     debug("Building ping embed")
     const latencySuffix = getLatencySuffix(latency);
     const apiLatencySuffix = getLatencySuffix(apiLatency);

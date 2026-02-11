@@ -1,6 +1,6 @@
 import { ActivityType, Events } from "discord.js";
 import type { EventListener } from "./index.js";
-import { getCommandsData } from "../commands/index.js";
+import { getCommandsData } from "../commands/commands.js";
 // import { deployCommands } from "../deployCommands.js"; // TODO: Use or remove
 // import { config } from "../config.js";
 import { debug, info, success } from "../log.js";
@@ -44,5 +44,5 @@ function registerApplicationCommands(application: ClientApplication): void {
 //     if (config.testing_guild_id === "")
 //         return debug("Testing guild ID is not set, skipping deployment to testing guild");
 
-//     deployCommands({ guildId: config.testing_guild_id });
+//     deployCommands(config.testing_guild_id);
 // }

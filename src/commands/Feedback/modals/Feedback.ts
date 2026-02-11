@@ -1,25 +1,55 @@
-import { EmbedBuilder, MessageFlags, ModalSubmitInteraction, User, type InteractionReplyOptions } from "discord.js";
-import type { Modal } from "./index.js";
-import { debug } from "../log.js";
-import { Ok, type Result } from "../result.js";
-import prisma from "../prisma.js";
-import { FeedbackType } from "../generated/prisma/enums.js";
-import { feedbackModalFields } from "../commands/Feedback.js";
-import { sendToChannel } from "../util/client.js";
-import { config } from "../config.js";
-import colors from "../colors.js";
+// TODO: Implement
+
+import { EmbedBuilder, MessageFlags, ModalBuilder, ModalSubmitInteraction, User, type InteractionReplyOptions } from "discord.js";
+import type { Modal } from "../../modals.js";
+import { debug } from "../../../log.js";
+import { Ok, type Result } from "../../../result.js";
+import prisma from "../../../prisma.js";
+import { FeedbackType } from "../../../generated/prisma/enums.js";
+import { sendToChannel } from "../../../util/client.js";
+import { config } from "../../../config.js";
+import colors from "../../../Colors.js";
+import { createBasicTextInput } from "../../../util/modal.js";
 
 const FEEDBACK_RECEIVED_MESSAGE: InteractionReplyOptions = {
     content: "Thank you for your feedback! It has been received successfully.",
     flags: [MessageFlags.Ephemeral],
 };
 
+export const feedbackModalFields = {
+    bugReport: {
+        expectedBehavior: "expected_behavior",
+        actualBehavior: "actual_behavior",
+        stepsToReproduce: "steps_to_reproduce",
+    },
+    featureRequest: {
+        description: "description",
+        otherDetails: "other_details",
+    },
+    generalFeedback: {
+        description: "description",
+    },
+} as const;
+
+
 export const Feedback: Modal = {
     id: "feedback",
     submodals: {
-        "bug_report": {
+        "bug": {
+            builder: function createBugReportModal(): ModalBuilder {
+                debug("Creating bug report feedback modal");
+
+                const expectedBehavior = createBasicTextInput(feedbackModalFields.bugReport.expectedBehavior, "Explain what you expected to happen", true);
+                const actualBehavior = createBasicTextInput(feedbackModalFields.bugReport.actualBehavior, "Explain what actually happened", true);
+                const stepsToReproduce = createBasicTextInput(feedbackModalFields.bugReport.stepsToReproduce, "Steps to reproduce the issue", false);
+
+                return new ModalBuilder()
+                    .setCustomId("feedback;bug")
+                    .setTitle("Bug Report")
+                    .addLabelComponents(expectedBehavior, actualBehavior, stepsToReproduce);
+            },
             handler: async function executeBugReport(interaction: ModalSubmitInteraction, _args: string[]): Promise<Result> {
-                debug("Handling 'feedback;bug_report' modal submission");
+                debug("Handling 'feedback;bug' modal submission");
 
                 const expectedBehavior = interaction.fields.getTextInputValue(feedbackModalFields.bugReport.expectedBehavior) ?? "N/A";
                 const actualBehavior = interaction.fields.getTextInputValue(feedbackModalFields.bugReport.actualBehavior) ?? "N/A";
@@ -34,9 +64,9 @@ export const Feedback: Modal = {
                 return Ok();
             }
         },
-        "feature_request": {
+        "feature": {
             handler: async function executeFeatureRequest(interaction: ModalSubmitInteraction, _args: string[]): Promise<Result> {
-                debug("Handling 'feedback;feature_request' modal submission");
+                debug("Handling 'feedback;feature' modal submission");
 
                 const description = interaction.fields.getTextInputValue(feedbackModalFields.featureRequest.description) ?? "N/A";
                 const otherDetails = interaction.fields.getTextInputValue(feedbackModalFields.featureRequest.otherDetails) ?? "N/A";
@@ -50,9 +80,9 @@ export const Feedback: Modal = {
                 return Ok();
             }
         },
-        "general_feedback": {
+        "general": {
             handler: async function executeGeneralFeedback(interaction: ModalSubmitInteraction, _args: string[]): Promise<Result> {
-                debug("Handling 'feedback;general_feedback' modal submission");
+                debug("Handling 'feedback;general' modal submission");
 
                 const description = interaction.fields.getTextInputValue(feedbackModalFields.generalFeedback.description) ?? "N/A";
 
@@ -66,6 +96,29 @@ export const Feedback: Modal = {
             }
         },
     }
+}
+
+function createFeatureRequestModal(): ModalBuilder {
+    debug("Creating feature request feedback modal");
+
+    const description = createBasicTextInput(feedbackModalFields.featureRequest.description, "Describe your suggested feature", true);
+    const otherDetails = createBasicTextInput(feedbackModalFields.featureRequest.otherDetails, "Additional details (i.e. image links)", false);
+
+    return new ModalBuilder()
+        .setCustomId("feedback;feature")
+        .setTitle("Feature Request")
+        .addLabelComponents(description, otherDetails);
+}
+
+function createGeneralFeedbackModal(): ModalBuilder {
+    debug("Creating general feedback modal");
+
+    const description = createBasicTextInput(feedbackModalFields.generalFeedback.description, "Write your feedback here", true);
+
+    return new ModalBuilder()
+        .setCustomId("feedback;general")
+        .setTitle("General Feedback")
+        .addLabelComponents(description);
 }
 
 async function sendFeedbackToDiscord(type: FeedbackType, author: User, message: string): Promise<void> {

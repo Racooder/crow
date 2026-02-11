@@ -11,3 +11,5 @@ export const Template: Modal = {
         return Ok();
     }
 }
+
+//TODO: Implement new file format for modals
