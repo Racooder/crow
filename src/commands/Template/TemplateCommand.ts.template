@@ -1,11 +1,16 @@
+import nameLocalizations from "../../localization/template/commad_name.json" with { type: 'json' };
+import descriptionLocalizations from "../../localization/template/command_description.json" with { type: 'json' };
+
 import { ApplicationCommandType } from "discord.js";
 import type { Command } from "../commands.js";
 import templateCommandHandler from "./commandHandlers/template.js";
 
 export default {
     data: {
-        name: "template",
-        description: "A template command",
+        name: nameLocalizations["en-US"],
+        nameLocalizations: nameLocalizations,
+        description: descriptionLocalizations["en-US"],
+        descriptionLocalizations: descriptionLocalizations,
         type: ApplicationCommandType.ChatInput,
     },
     handler: templateCommandHandler,

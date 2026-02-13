@@ -4,7 +4,7 @@ import { LabelBuilder, ModalBuilder, ModalSubmitInteraction, TextInputBuilder, T
 import type { Modal, SubModal } from "../../../modals/index.js";
 import { debug } from "../../../log.js";
 import { Ok, type Result } from "../../../result.js";
-import { createBasicTextInput } from "../../../util/modal.js";
+import { createLabledTextInput } from "../../../util/modal.js";
 import type { QuoteStatement } from "../../../generated/prisma/client.js";
 
 export const quoteModalFields = {
@@ -30,9 +30,9 @@ export const Quote: Modal = {
     submodals: {
         "add": {
             builder: () => {
-                const quoteText = createBasicTextInput(quoteModalFields.add.quoteText, "The text of the quote", true);
+                const quoteText = createLabledTextInput(quoteModalFields.add.quoteText, "The text of the quote", true);
                 const quoteAuthor = createQuoteAuthorInput();
-                const quoteContext = createBasicTextInput(quoteModalFields.add.quoteContext, "The context of the quote", false);
+                const quoteContext = createLabledTextInput(quoteModalFields.add.quoteContext, "The context of the quote", false);
 
                 return new ModalBuilder()
                     .setCustomId("quote;add")
@@ -49,7 +49,7 @@ export const Quote: Modal = {
             submodals: {
                 "meta": {
                     builder: (conversationLength: number) => {
-                        const quoteContext = createBasicTextInput(quoteModalFields.add.quoteContext, "The context of the quote", false);
+                        const quoteContext = createLabledTextInput(quoteModalFields.add.quoteContext, "The context of the quote", false);
 
                         return new ModalBuilder()
                             .setCustomId(`quote;conversation;meta;${conversationLength}`)

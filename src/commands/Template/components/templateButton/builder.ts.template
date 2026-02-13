@@ -1,3 +1,6 @@
+import labelLocalizations from "../../../../localization/template/template_button_label.json" with { type: 'json' };
+import translate from "../../../../translate.js";
+
 import { ButtonBuilder, ButtonStyle } from "discord.js";
 import { debug } from "../../../../log.js";
 
@@ -5,5 +8,5 @@ export default function createTemplateButton(): ButtonBuilder {
     debug("Creating template button");
     return new ButtonBuilder()
         .setStyle(ButtonStyle.Link)
-        .setLabel("Template");
+        .setLabel(translate(labelLocalizations));
 }

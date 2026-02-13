@@ -1,3 +1,7 @@
+import titleLocalizations from "../../../localization/donate/donation_embed_title.json" with { type: 'json' };
+import descriptionLocalizations from "../../../localization/donate/donation_embed_description.json" with { type: 'json' };
+import translate from "../../../translate.js";
+
 import { EmbedBuilder } from "discord.js";
 import { debug } from "../../../log.js";
 import Colors from "../../../Colors.js";
@@ -8,7 +12,7 @@ export default function createDonationEmbed(): EmbedBuilder {
     debug("Creating embed");
     return new EmbedBuilder()
         .setColor(Colors.DONATE_EMBED)
-        .setTitle("Donate on Ko-fi or directly per PayPal!")
-        .setDescription("Consider supporting the developement and hosting of the bot by donating via Ko-fi or PayPal!")
+        .setTitle(translate(titleLocalizations))
+        .setDescription(translate(descriptionLocalizations))
         .setThumbnail(THUMBNAIL_URL);
 }

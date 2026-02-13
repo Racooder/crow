@@ -1,3 +1,7 @@
+import titleLocalizations from "../../../localization/template/template_embed_title.json" with { type: 'json' };
+import descriptionLocalizations from "../../../localization/template/template_embed_description.json" with { type: 'json' };
+import translate from "../../../translate.js";
+
 import { EmbedBuilder } from "discord.js";
 import { debug } from "../../../log.js";
 import Colors from "../../../Colors.js";
@@ -6,6 +10,6 @@ export default function createTemplateEmbed(): EmbedBuilder {
     debug("Creating template embed");
     return new EmbedBuilder()
         .setColor(Colors.TEMPLATE_EMBED)
-        .setTitle("Template Embed")
-        .setDescription("This is a template embed!");
+        .setTitle(translate(titleLocalizations))
+        .setDescription(translate(descriptionLocalizations));
 }
