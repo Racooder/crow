@@ -10,7 +10,7 @@ import translate from "../../../../translate.js";
 import { ModalBuilder } from "@discordjs/builders";
 import { debug } from "../../../../log.js";
 import { createLabeledTextInputWithPlaceholder, createLabledTextInput } from '../../../../util/modal.js';
-import { bugReportModalFields } from "./shared.js";
+import { bugReportModalFields } from "./common.js";
 
 export default function createBugReportModal(): ModalBuilder {
     debug("Creating bug report feedback modal");

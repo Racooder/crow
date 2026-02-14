@@ -7,7 +7,7 @@ import translate from "../../../../translate.js";
 import type { ModalSubmitInteraction } from "discord.js";
 import { Ok, type Result } from "../../../../result.js";
 import { debug } from "../../../../log.js";
-import { bugReportModalFields } from "./shared.js";
+import { bugReportModalFields } from "./common.js";
 import { FeedbackType } from "../../../../generated/prisma/enums.js";
 import { createFeedback, getFeedbackReceivedMessage, sendFeedbackToDiscord } from "../shared.js";
 

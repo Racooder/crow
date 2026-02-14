@@ -6,7 +6,7 @@ import { Ok, type Result } from "../../../../result.js";
 import { debug } from "../../../../log.js";
 import { createFeedback, getFeedbackReceivedMessage, sendFeedbackToDiscord } from "../shared.js";
 import { FeedbackType } from "../../../../generated/prisma/browser.js";
-import { otherFeedbackModalFields } from "./shared.js";
+import { otherFeedbackModalFields } from "./common.js";
 
 export default async function handleOtherFeedbackModal(interaction: ModalSubmitInteraction, _args: string[]): Promise<Result> {
     debug("Handling 'feedback;other' modal submission");
