@@ -1,11 +1,12 @@
-import nameLocalizations from "../../localization/feedback/commad_name.json" with { type: 'json' };
-import descriptionLocalizations from "../../localization/feedback/command_description.json" with { type: 'json' };
-import typeOptionNameLocalization from "../../localization/feedback/commad_name.json" with { type: 'json' };
-import typeOptionDescriptionLocalization from "../../localization/feedback/command_description.json" with { type: 'json' };
+import nameLocalizations from "../../../localization/feedback/commad_name.json" with { type: 'json' };
+import descriptionLocalizations from "../../../localization/feedback/command_description.json" with { type: 'json' };
+import typeOptionNameLocalization from "../../../localization/feedback/commad_name.json" with { type: 'json' };
+import typeOptionDescriptionLocalization from "../../../localization/feedback/command_description.json" with { type: 'json' };
+
+import feedbackCommandHandler from "./feedback.js";
 
 import { ApplicationCommandOptionType, ApplicationCommandType } from "discord.js";
-import type { Command } from "../commands.js";
-import feedbackCommandHandler from "./commandHandlers/feedback.js";
+import type { Command } from "../../commands.js";
 
 export default {
     data: {

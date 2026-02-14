@@ -1,9 +1,10 @@
-import nameLocalizations from "../../localization/ping/commad_name.json" with { type: 'json' };
-import descriptionLocalizations from "../../localization/ping/command_description.json" with { type: 'json' };
+import nameLocalizations from "../../../localization/template/commad_name.json" with { type: 'json' };
+import descriptionLocalizations from "../../../localization/template/command_description.json" with { type: 'json' };
+
+import templateCommandHandler from "./template.js";
 
 import { ApplicationCommandType } from "discord.js";
 import type { Command } from "../commands.js";
-import pingCommandHandler from "./commandHandlers/ping.js";
 
 export default {
     data: {
@@ -13,6 +14,6 @@ export default {
         descriptionLocalizations: descriptionLocalizations,
         type: ApplicationCommandType.ChatInput,
     },
-    handler: pingCommandHandler,
+    handler: templateCommandHandler,
     subcommands: {},
 } as Command;

@@ -1,9 +1,10 @@
+import { COMMANDS, type Command, type CommandHandler } from "../interactions/commands.js";
+import { MODALS, type Modal, type ModalHandler, type SubModal } from "../interactions/modals.js";
+
 import { BaseInteraction, Events, ModalSubmitInteraction, type ChatInputCommandInteraction } from "discord.js";
 import type { EventListener } from "./index.js";
-import { COMMANDS, type Command, type CommandHandler } from "../commands/commands.js";
 import { debug, error } from "../log.js";
 import { replyHowever } from "../util/interaction.js";
-import { MODALS, type Modal, type ModalHandler, type SubModal } from "../commands/modals.js";
 import { Exception } from "../exception.js";
 import client from "../client.js";
 import { Err, isErr, Ok, type Result } from "../result.js";

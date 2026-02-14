@@ -1,11 +1,12 @@
+import quoteAddCommandHandler from "./quoteAdd.js";
+import quoteRemoveCommandHandler from "./quoteRemove.js";
+import quoteEditCommandHandler from "./quoteEdit.js";
+import quoteListCommandHandler from "./quoteList.js";
+import quoteSearchCommandHandler from "./quoteSearch.js";
+import quoteContextCommandHandler from "./quoteContext.js";
+
 import { ApplicationCommandOptionType, ApplicationCommandType } from "discord.js";
-import type { Command } from "../commands.js";
-import quoteAddCommandHandler from "./commandHandlers/quoteAdd.js";
-import quoteRemoveCommandHandler from "./commandHandlers/quoteRemove.js";
-import quoteEditCommandHandler from "./commandHandlers/quoteEdit.js";
-import quoteListCommandHandler from "./commandHandlers/quoteList.js";
-import quoteSearchCommandHandler from "./commandHandlers/quoteSearch.js";
-import quoteContextCommandHandler from "./commandHandlers/quoteContext.js";
+import type { Command } from "../../commands.js";
 
 export default {
     data: {

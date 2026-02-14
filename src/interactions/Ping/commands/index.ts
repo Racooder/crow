@@ -1,9 +1,10 @@
-import nameLocalizations from "../../localization/donate/commad_name.json" with { type: 'json' };
-import descriptionLocalizations from "../../localization/donate/command_description.json" with { type: 'json' };
+import nameLocalizations from "../../../localization/ping/commad_name.json" with { type: 'json' };
+import descriptionLocalizations from "../../../localization/ping/command_description.json" with { type: 'json' };
+
+import pingCommandHandler from "./ping.js";
 
 import { ApplicationCommandType } from "discord.js";
-import type { Command } from "../commands.js";
-import donateCommandHandler from "./commandHandlers/donate.js";
+import type { Command } from "../../commands.js";
 
 export default {
     data: {
@@ -13,6 +14,6 @@ export default {
         descriptionLocalizations: descriptionLocalizations,
         type: ApplicationCommandType.ChatInput,
     },
-    handler: donateCommandHandler,
+    handler: pingCommandHandler,
     subcommands: {},
 } as Command;

@@ -1,3 +1,5 @@
+import FeedbackModal from "./Feedback/modals/index.js";
+
 import type { ModalSubmitInteraction } from "discord.js";
 import type { Result } from "../result.js";
 
@@ -5,7 +7,7 @@ export type ModalHandler = (interaction: ModalSubmitInteraction, args: string[])
 
 export interface SubModal {
     handler?: ModalHandler;
-    submodals?: Record<string, SubModal>;
+    submodals: Record<string, SubModal>;
 }
 
 export interface Modal extends SubModal {
@@ -13,7 +15,5 @@ export interface Modal extends SubModal {
 }
 
 export const MODALS: Record<string, Modal> = {
-    [Feedback.id]: Feedback,
+    [FeedbackModal.id]: FeedbackModal,
 };
-
-// TODO: Split up modal handler files into new format and import here

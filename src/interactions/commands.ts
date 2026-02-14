@@ -1,11 +1,11 @@
+import PingCommand  from "./Ping/commands/index.js";
+import DonateCommand from "./Donate/commands/index.js";
+import FeedbackCommand from "./Feedback/commands/index.js";
+// TODO: Implement QuoteCommand and import here
+
 import type { ChatInputApplicationCommandData, ChatInputCommandInteraction } from "discord.js";
 import { debug } from "../log.js";
 import type { Result } from "../result.js";
-
-import PingCommand  from "./Ping/PingCommand.js";
-import DonateCommand from "./Donate/DonateCommand.js";
-import FeedbackCommand from "./Feedback/FeedbackCommand.js";
-// TODO: Implement QuoteCommand and import here
 
 export type CommandHandler = (interaction: ChatInputCommandInteraction) => Promise<Result>;
 

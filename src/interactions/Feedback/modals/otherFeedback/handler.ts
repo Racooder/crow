@@ -8,7 +8,7 @@ import { createFeedback, getFeedbackReceivedMessage, sendFeedbackToDiscord } fro
 import { FeedbackType } from "../../../../generated/prisma/browser.js";
 import { otherFeedbackModalFields } from "./shared.js";
 
-export async function handleOtherFeedbackModal(interaction: ModalSubmitInteraction, _args: string[]): Promise<Result> {
+export default async function handleOtherFeedbackModal(interaction: ModalSubmitInteraction, _args: string[]): Promise<Result> {
     debug("Handling 'feedback;other' modal submission");
 
     const description = interaction.fields.getTextInputValue(otherFeedbackModalFields.description) ?? "N/A";

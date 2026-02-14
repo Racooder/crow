@@ -1,0 +1,4 @@
+- Track User Actions to replace prompting users for bug reports
+- Check if token is duplicate
+- Use question mark as separator in modal and component ids for arguments instead of semicolon which could lead to bugs
+- Rename shared to common
