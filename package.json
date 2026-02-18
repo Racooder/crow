@@ -19,7 +19,7 @@
         "tsx": "^4.20.6"
     },
     "scripts": {
-        "migrate": "npx prisma migrate dev",
+        "migrate": "npx prisma migrate dev && npx prisma generate",
         "view-db": "npx prisma studio",
         "dev": "npx prisma migrate dev && tsx src/index.ts",
         "start": "node dist/index.js",
