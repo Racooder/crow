@@ -22,7 +22,7 @@ const config: runtime.GetPrismaClientConfig = {
       "value": "prisma-client"
     },
     "output": {
-      "value": "/home/racooder/Projects/Code/racoonia-bot/src/generated/prisma",
+      "value": "/home/racooder/Projects/Code/crow/src/generated/prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -36,7 +36,7 @@ const config: runtime.GetPrismaClientConfig = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "/home/racooder/Projects/Code/racoonia-bot/src/prisma/schema.prisma",
+    "sourceFilePath": "/home/racooder/Projects/Code/crow/src/prisma/schema.prisma",
     "isCustomOutput": true
   },
   "relativePath": "../../prisma",

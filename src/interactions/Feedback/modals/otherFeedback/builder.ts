@@ -6,7 +6,7 @@ import translate from "../../../../translate.js";
 import { ModalBuilder } from "@discordjs/builders";
 import { debug } from "../../../../log.js";
 import { createLabeledTextInputWithPlaceholder } from "../../../../util/modal.js";
-import { otherFeedbackModalFields } from "./common.js";
+import otherFeedbackModalFields from "./fields.js";
 
 export default function createOtherFeedbackModal(): ModalBuilder {
     debug("Creating other feedback modal");

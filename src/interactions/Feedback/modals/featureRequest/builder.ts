@@ -7,7 +7,7 @@ import translate from "../../../../translate.js";
 import { ModalBuilder } from "@discordjs/builders";
 import { debug } from "../../../../log.js";
 import { createLabeledTextInputWithPlaceholder, createLabledTextInput } from "../../../../util/modal.js";
-import { featureRequestModalFields } from "./common.js";
+import featureRequestModalFields from "./fields.js";
 
 export default function createFeatureRequestModal(): ModalBuilder {
     debug("Creating feature request feedback modal");

@@ -1,11 +1,10 @@
 // TODO: Implement
 
-import { LabelBuilder, ModalBuilder, ModalSubmitInteraction, TextInputBuilder, TextInputStyle, UserSelectMenuBuilder } from "discord.js";
-import type { Modal, SubModal } from "../../../modals/index.js";
+import { LabelBuilder, ModalBuilder, ModalSubmitInteraction, UserSelectMenuBuilder } from "discord.js";
+import type { Modal } from "../../modals.js";
 import { debug } from "../../../log.js";
 import { Ok, type Result } from "../../../result.js";
 import { createLabledTextInput } from "../../../util/modal.js";
-import type { QuoteStatement } from "../../../generated/prisma/client.js";
 
 export const quoteModalFields = {
     add: {
@@ -74,30 +73,4 @@ function createQuoteAuthorInput(defaultUserId?: string): LabelBuilder {
     return new LabelBuilder()
         .setLabel("Author of the quote")
         .setUserSelectMenuComponent(input);
-}
-
-// Conversation Meta
-
-export 
-
-// Edit Statement
-
-function createEditStatementModal(statement: QuoteStatement): ModalBuilder {
-    const quoteTextInput = new TextInputBuilder()
-        .setCustomId(quoteModalFields.edit.quoteText)
-        .setRequired(true)
-        .setStyle(TextInputStyle.Paragraph)
-        .setValue(statement.text);
-
-    const quoteTextLabel = new LabelBuilder()
-        .setLabel("The text of the quote")
-        .setTextInputComponent(quoteTextInput);
-
-    const quoteAuthorLabel = createQuoteAuthorInput(statement.authorId);
-
-    return new ModalBuilder()
-        .setCustomId(`quote;edit;${statement.id};${statement.order}`)
-        .setTitle("Edit Quote Statement")
-        .addLabelComponents(quoteTextLabel, quoteAuthorLabel);
-
 }

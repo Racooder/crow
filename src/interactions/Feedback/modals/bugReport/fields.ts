@@ -1,4 +1,4 @@
-export const bugReportModalFields = {
+export default {
     expectedBehavior: "expected_behavior",
     actualBehavior: "actual_behavior",
     stepsToReproduce: "steps_to_reproduce",

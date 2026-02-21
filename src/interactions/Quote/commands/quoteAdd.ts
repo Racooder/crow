@@ -8,7 +8,7 @@ export default async function quoteAddCommandHandler(interaction: ChatInputComma
     const conversationLength = interaction.options.getInteger("conversation_length", false);
 
     if (conversationLength !== null && conversationLength >= 2) {
-        const modal = createConversationMetaModal(conversationLength);
+        const modal = createQuoteMetaModal(conversationLength);
         await interaction.showModal(modal);
         return Ok();
     }
