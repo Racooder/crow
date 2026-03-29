@@ -1,7 +1,8 @@
-import type { User } from "discord.js";
-import type { QuoteMeta } from "../../generated/prisma/client.js";
+import type { Guild, User } from "discord.js";
+import type { QuoteMeta, QuoteStatement } from "../../generated/prisma/client.js";
 import prisma from "../../prisma.js";
 import type { PopulatedQuote } from "../../util/prisma.js";
+import { isUserInGuild } from "../../util/guild.js";
 
 export function getQuoteByToken(token: string): Promise<PopulatedQuote | null> {
     return prisma.quoteMeta.findUnique({
@@ -31,3 +32,20 @@ export type QuoteListFilter = {
     authorUsername?: string;
     isConversation?: boolean;
 }
+
+export async function formatStatements(statements: QuoteStatement[], guild: Guild | null): Promise<string> {
+    return Promise.all(statements.map(s => formatSingleStatement(s, guild))).then(lines => lines.join("\n"));
+}
+
+async function formatSingleStatement(statement: QuoteStatement, guild: Guild | null): Promise<string> {
+    const author = await formatStatementAuthor(statement, guild);
+    return `"${statement.text}" - ${author}`;
+}
+
+async function formatStatementAuthor(statement: QuoteStatement, guild: Guild | null): Promise<string> {
+    if (guild !== null && await isUserInGuild(statement.authorId, guild)) {
+        return `<@${statement.authorId}>`;
+    }
+    return statement.authorUsername;
+}
+

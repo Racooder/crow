@@ -1,7 +1,7 @@
 import PingCommand  from "./Ping/commands/index.js";
 import DonateCommand from "./Donate/commands/index.js";
 import FeedbackCommand from "./Feedback/commands/index.js";
-// TODO: Implement QuoteCommand and import here
+import QuoteCommand from "./Quote/commands/index.js";
 
 import type { ChatInputApplicationCommandData, ChatInputCommandInteraction } from "discord.js";
 import { debug } from "../log.js";
@@ -24,6 +24,7 @@ export const COMMANDS: Record<string, Command> = {
     [PingCommand.data.name]: PingCommand,
     [DonateCommand.data.name]: DonateCommand,
     [FeedbackCommand.data.name]: FeedbackCommand,
+    [QuoteCommand.data.name]: QuoteCommand,
 };
 
 export function getCommandsData(): ChatInputApplicationCommandData[] {

@@ -1,4 +1,5 @@
 import FeedbackModal from "./Feedback/modals/index.js";
+import QuoteModal from "./Quote/modals/index.js";
 
 import type { ModalSubmitInteraction } from "discord.js";
 import type { Result } from "../result.js";
@@ -16,4 +17,5 @@ export interface Modal extends SubModal {
 
 export const MODALS: Record<string, Modal> = {
     [FeedbackModal.id]: FeedbackModal,
+    [QuoteModal.id]: QuoteModal,
 };
