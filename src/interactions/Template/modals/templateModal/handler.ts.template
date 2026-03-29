@@ -1,1 +1,13 @@
-// TODO: Implement
+import type { ModalSubmitInteraction } from "discord.js";
+import { Ok, type Result } from "../../../../result.js";
+import { debug } from "../../../../log.js";
+import templateModalFields from "./fields.js";
+
+export default async function handleTemplateModal(interaction: ModalSubmitInteraction, _args: string[]): Promise<Result> {
+    debug("Handling 'template' modal submission");
+
+    const template = interaction.fields.getTextInputValue(templateModalFields.templateField);
+
+    interaction.reply("Template submitted!");
+    return Ok();
+}

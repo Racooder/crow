@@ -1,0 +1,18 @@
+import { LabelBuilder, ModalBuilder, TextInputBuilder, TextInputStyle } from "discord.js";
+import templateModalFields from "./fields.js";
+
+export default function createTemplateModal(): ModalBuilder {
+    const templateInput = new TextInputBuilder()
+        .setCustomId(templateModalFields.templateField)
+        .setRequired(false)
+        .setStyle(TextInputStyle.Paragraph);
+
+    const templateLabel = new LabelBuilder()
+        .setLabel("Template")
+        .setTextInputComponent(templateInput);
+
+    return new ModalBuilder()
+        .setCustomId("template")
+        .setTitle("Template")
+        .addLabelComponents(templateLabel);
+}
