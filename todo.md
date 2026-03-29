@@ -2,3 +2,7 @@
 - Check if token is duplicate
 - Use question mark as separator in modal and component ids for arguments instead of semicolon which could lead to bugs
 - Rename shared to common
+- Test quote edit with author that left the server
+- Replace ephemeral with flags
+- Replace fail response with exceptions
+- Handle quote edit
