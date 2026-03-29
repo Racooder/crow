@@ -23,7 +23,7 @@ export default async function quoteInfoCommandHandler(interaction: ChatInputComm
         return Ok();
     }
 
-    const embed = await createInfoEmbed(quoteObj, interaction.guild);
+    const embed = await createInfoEmbed(interaction.client, quoteObj, interaction.guild);
 
     interaction.reply({
         embeds: [embed],
