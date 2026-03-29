@@ -56,4 +56,5 @@ model QuoteStatement {
     order           Int // Position of quote in conversation
 
     @@index([quoteId, authorId, authorUsername, order])
+    @@unique([quoteId, order])
 }
