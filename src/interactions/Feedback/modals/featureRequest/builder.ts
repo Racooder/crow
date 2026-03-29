@@ -4,16 +4,16 @@ import descriptionPlaceholderLocalizations from "../../../../localization/feedba
 import otherDetailsLabelLocalizations from "../../../../localization/feedback/feature_request_modal_description_placeholder.json" with { type: 'json' };
 import translate from "../../../../translate.js";
 
-import { ModalBuilder } from "@discordjs/builders";
 import { debug } from "../../../../log.js";
-import { createLabeledTextInputWithPlaceholder, createLabledTextInput } from "../../../../util/modal.js";
+import { createLabeledTextInput } from "../../../../util/modal.js";
 import featureRequestModalFields from "./fields.js";
+import { ModalBuilder } from "discord.js";
 
 export default function createFeatureRequestModal(): ModalBuilder {
     debug("Creating feature request feedback modal");
 
-    const description = createLabeledTextInputWithPlaceholder(featureRequestModalFields.description, translate(descriptionLabelLocalizations), translate(descriptionPlaceholderLocalizations), true);
-    const otherDetails = createLabledTextInput(featureRequestModalFields.otherDetails, translate(otherDetailsLabelLocalizations), false);
+    const description = createLabeledTextInput(featureRequestModalFields.description, translate(descriptionLabelLocalizations), true, translate(descriptionPlaceholderLocalizations));
+    const otherDetails = createLabeledTextInput(featureRequestModalFields.otherDetails, translate(otherDetailsLabelLocalizations), false);
 
     return new ModalBuilder()
         .setCustomId("feedback;feature")

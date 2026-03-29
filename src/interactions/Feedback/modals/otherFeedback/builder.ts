@@ -3,15 +3,15 @@ import descriptionLabelLocalizations from "../../../../localization/feedback/oth
 import descriptionPlaceholderLocalizations from "../../../../localization/feedback/other_feedback_modal_description_placeholder.json" with { type: 'json' };
 import translate from "../../../../translate.js";
 
-import { ModalBuilder } from "@discordjs/builders";
 import { debug } from "../../../../log.js";
-import { createLabeledTextInputWithPlaceholder } from "../../../../util/modal.js";
+import { createLabeledTextInput } from "../../../../util/modal.js";
 import otherFeedbackModalFields from "./fields.js";
+import { ModalBuilder } from "discord.js";
 
 export default function createOtherFeedbackModal(): ModalBuilder {
     debug("Creating other feedback modal");
 
-    const description = createLabeledTextInputWithPlaceholder(otherFeedbackModalFields.description, translate(descriptionLabelLocalizations), translate(descriptionPlaceholderLocalizations), true);
+    const description = createLabeledTextInput(otherFeedbackModalFields.description, translate(descriptionLabelLocalizations), true, translate(descriptionPlaceholderLocalizations));
 
     return new ModalBuilder()
         .setCustomId("feedback;other")
