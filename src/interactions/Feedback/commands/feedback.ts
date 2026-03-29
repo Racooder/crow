@@ -1,3 +1,6 @@
+import unknownFeedbackTypeSelectedLocalizations from "../../../localization/feedback/unknown_feedback_type_selected.json" with { type: 'json' };
+import translate from "../../../translate.js";
+
 import type { ChatInputCommandInteraction } from "discord.js";
 import { debug } from "../../../log.js";
 import { Err, Ok, type Result } from "../../../result.js";
@@ -24,7 +27,7 @@ export default async function feedbackCommandHandler(interaction: ChatInputComma
             modal = createOtherFeedbackModal();
             break;
         default:
-            return Err("An unknown feedback type was selected in the feedback command.");
+            return Err(translate(unknownFeedbackTypeSelectedLocalizations));
     }
 
     await interaction.showModal(modal);
