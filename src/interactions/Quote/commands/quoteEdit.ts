@@ -1,7 +1,12 @@
+import noQuoteWithTokenLocalizations from "../../../localization/quote/no_quote_with_token.json" with { type: 'json' };
+import editPermissionMissingLocalizations from "../../../localization/quote/edit_permission_missing.json" with { type: 'json' };
+import cantEditConversationsLocalizations from "../../../localization/quote/cant_edit_conversations.json" with { type: 'json' };
+import translate from "../../../translate.js";
+
 import { MessageFlags, type ChatInputCommandInteraction } from "discord.js";
 import { Ok, type Result } from "../../../result.js";
 import { debug } from "../../../log.js";
-import createEditMetaModal from "../modals/editMeta.js";
+import createEditModal from "../modals/edit/builder.js";
 import { checkQuoteEditPermissions, getQuoteByToken } from "../util.js";
 
 export default async function quoteEditCommandHandler(interaction: ChatInputCommandInteraction): Promise<Result> {
@@ -13,7 +18,7 @@ export default async function quoteEditCommandHandler(interaction: ChatInputComm
 
     if (quoteObj === null) {
         interaction.reply({
-            content: `No quote found with token \`${token}\`.`,
+            content: `${translate(noQuoteWithTokenLocalizations)} \`${token}\`.`,
             flags: [MessageFlags.Ephemeral],
         });
         return Ok();
@@ -21,13 +26,21 @@ export default async function quoteEditCommandHandler(interaction: ChatInputComm
 
     if (!checkQuoteEditPermissions(quoteObj, interaction.user)) {
         interaction.reply({
-            content: "You can only edit quotes that you have created.",
+            content: `${translate(editPermissionMissingLocalizations)}`,
             flags: [MessageFlags.Ephemeral],
         });
         return Ok();
     }
 
-    const modal = createEditMetaModal(quoteObj);
+    if (quoteObj.statements.length > 1) {
+        interaction.reply({
+            content: `${translate(cantEditConversationsLocalizations)}`,
+            flags: [MessageFlags.Ephemeral],
+        });
+        return Ok();
+    }
+
+    const modal = createEditModal(quoteObj);
     await interaction.showModal(modal);
 
     return Ok();

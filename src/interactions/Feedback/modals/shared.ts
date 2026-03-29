@@ -1,3 +1,6 @@
+import receivedLocalization from "../../../localization/feedback/received.json" with { type: 'json' };
+import translate from "../../../translate.js";
+
 import { EmbedBuilder, MessageFlags, type InteractionReplyOptions, type User } from "discord.js";
 import Colors from "../../../Colors.js";
 import { config } from "../../../config.js";
@@ -7,7 +10,7 @@ import prisma from "../../../prisma.js";
 
 export function getFeedbackReceivedMessage(): InteractionReplyOptions {
     return {
-        content: "Thank you for your feedback! It has been received successfully.",
+        content: translate(receivedLocalization),
         flags: [MessageFlags.Ephemeral],
     };
 }
