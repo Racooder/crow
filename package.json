@@ -5,18 +5,18 @@
     "main": "index.js",
     "license": "MIT",
     "dependencies": {
-        "@prisma/client": "^6.18.0",
+        "@prisma/client": "^6.19.2",
         "@prisma/extension-accelerate": "^2.0.2",
-        "discord.js": "^14.24.2",
-        "dotenv": "^17.2.3",
-        "nanoid": "^5.1.6"
+        "discord.js": "^14.25.1",
+        "dotenv": "^17.3.1",
+        "nanoid": "^5.1.7"
     },
     "devDependencies": {
         "@types/js-yaml": "^4.0.9",
-        "@types/node": "^24.9.2",
-        "prisma": "^6.18.0",
-        "tsup": "^8.5.0",
-        "tsx": "^4.20.6"
+        "@types/node": "^24.12.0",
+        "prisma": "^6.19.2",
+        "tsup": "^8.5.1",
+        "tsx": "^4.21.0"
     },
     "scripts": {
         "migrate": "npx prisma migrate dev && npx prisma generate",
