@@ -69,8 +69,9 @@ import quoteListCommandHandler from "./quoteList.js";
 import quoteSearchCommandHandler from "./quoteSearch.js";
 import quoteInfoCommandHandler from "./quoteInfo.js";
 
-import { ApplicationCommandOptionType, ApplicationCommandType } from "discord.js";
+import { ApplicationCommandOptionType, ApplicationCommandType, ChatInputCommandInteraction } from "discord.js";
 import type { Command } from "../../commands.js";
+import maintenanceCommandHandler from "./maintenance.js";
 
 export default {
     data: {
@@ -335,7 +336,7 @@ export default {
             subcommands: {},
         },
         [removeSubcommandNameLocalizations["en-US"]]: {
-            handler: quoteRemoveCommandHandler,
+            handler: (interaction: ChatInputCommandInteraction) => maintenanceCommandHandler(interaction, "remove", "The command should be available soon."),// quoteRemoveCommandHandler,
             subcommands: {},
         },
         [editSubcommandNameLocalizations["en-US"]]: {
