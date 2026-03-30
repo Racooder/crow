@@ -225,6 +225,14 @@ export default {
                 description: listSubcommandDescriptionLocalizations["en-US"],
                 descriptionLocalizations: listSubcommandDescriptionLocalizations,
                 type: ApplicationCommandOptionType.Subcommand,
+                options: [ // TODO: Remove after button implementation is done
+                    {
+                        name: "page",
+                        description: "The page number to show (currently has no effect)",
+                        type: ApplicationCommandOptionType.Integer,
+                        required: false,
+                    }
+                ]
             },
             {
                 name: searchSubcommandNameLocalizations["en-US"],

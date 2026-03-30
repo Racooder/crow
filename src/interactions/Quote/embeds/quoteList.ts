@@ -2,8 +2,20 @@ import { Client, EmbedBuilder, Guild, type APIEmbedField } from "discord.js";
 import type { PopulatedQuote } from "../../../database/Quote.js";
 import Colors from "../../../Colors.js";
 import { formatStatements, getUserDisplayName, type QuoteListFilter } from "../util.js";
+import prisma from "../../../prisma.js";
 
-export default async function createQuoteListEmbed(client: Client, guild: Guild | null, quotes: PopulatedQuote[], filter: QuoteListFilter, page: number, pages: number): Promise<EmbedBuilder> {
+export default async function createQuoteListEmbed(client: Client, guild: Guild | null, quotes: PopulatedQuote[], filter: QuoteListFilter, page: number): Promise<EmbedBuilder> {
+    const whereClause = Object.fromEntries(
+        Object.entries(filter).filter(([_, value]) => value !== undefined)
+    );
+
+    const pages = await prisma.quoteMeta.count({
+        where: whereClause,
+    }).then(count => Math.max(1, Math.ceil(count / 10))); // TODO: Remove hardcoded page size
+    if (page > pages) {
+        page = pages;
+    }
+
     const embed = new EmbedBuilder()
     .setTitle(`Quotes (Page ${page} of ${pages})`)
     .setColor(Colors.QUOTE_EMBED);

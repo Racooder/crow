@@ -69,7 +69,7 @@ export async function getListQuotes(page: number, filter: QuoteListFilter): Prom
     });
 }
 
-export function getUserDisplayName(client: Client, guild: Guild | null, userId: string, fallbackUsername: string): Promise<string> {
+export async function getUserDisplayName(client: Client, guild: Guild | null, userId: string, fallbackUsername: string): Promise<string> {
     if (guild) {
         return guild.members.fetch(userId)
             .then(member => member.displayName)
