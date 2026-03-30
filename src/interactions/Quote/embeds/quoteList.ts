@@ -10,9 +10,9 @@ export default async function createQuoteListEmbed(client: Client, guild: Guild 
 
     const filterDesc = createFilterDescription(filter);
     if (filterDesc === undefined) {
-        embed.setDescription(`Showing ${quotes.length} quotes:`);
+        embed.setDescription(`**Currently still work in progress, page buttons coming soon.**\n\nShowing ${quotes.length} quotes:`); // TODO: Remove notice
     } else {
-        embed.setDescription(`Showing ${quotes.length} quotes matching:\n${filterDesc}`);
+        embed.setDescription(`**Currently still work in progress, page buttons coming soon.**\n\nShowing ${quotes.length} quotes matching:\n${filterDesc}`); // TODO: Remove notice
     }
 
     const fields = await quoteListToFields(client, guild, quotes);
@@ -41,7 +41,7 @@ function createFilterDescription(filter: QuoteListFilter): string | undefined {
     const parts: string[] = [];
 
     if (filter.creatorId) {
-        parts.push(`Creator ID: \`${filter.creatorId}\``);
+        parts.push(`Creator: <@${filter.creatorId}>`);
     }
     if (filter.contextContains) {
         parts.push(`Context contains: "${filter.contextContains}"`);
@@ -56,7 +56,7 @@ function createFilterDescription(filter: QuoteListFilter): string | undefined {
         parts.push(`Text contains: "${filter.textContains}"`);
     }
     if (filter.authorId) {
-        parts.push(`Author ID: \`${filter.authorId}\``);
+        parts.push(`Author: <@${filter.authorId}>`);
     }
     if (filter.isConversation !== undefined) {
         parts.push(`Is conversation: ${filter.isConversation ? "Yes" : "No"}`);
