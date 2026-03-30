@@ -38,6 +38,24 @@ import listSubcommandNameLocalizations from "../../../localization/quote/list_su
 import listSubcommandDescriptionLocalizations from "../../../localization/quote/list_subcommand_description.json" with { type: 'json' };
 import searchSubcommandNameLocalizations from "../../../localization/quote/search_subcommand_name.json" with { type: 'json' };
 import searchSubcommandDescriptionLocalizations from "../../../localization/quote/search_subcommand_description.json" with { type: 'json' };
+import searchSubcommandCreatorOptionNameLocalizations from "../../../localization/quote/search_subcommand_creator_option_name.json" with { type: 'json' };
+import searchSubcommandCreatorOptionDescriptionLocalizations from "../../../localization/quote/search_subcommand_creator_option_description.json" with { type: 'json' };
+import searchSubcommandCreatorNameOptionNameLocalizations from "../../../localization/quote/search_subcommand_creator_name_option_name.json" with { type: 'json' };
+import searchSubcommandCreatorNameOptionDescriptionLocalizations from "../../../localization/quote/search_subcommand_creator_name_option_description.json" with { type: 'json' };
+import searchSubcommandContextOptionNameLocalizations from "../../../localization/quote/search_subcommand_context_option_name.json" with { type: 'json' };
+import searchSubcommandContextOptionDescriptionLocalizations from "../../../localization/quote/search_subcommand_context_option_description.json" with { type: 'json' };
+import searchSubcommandCreatedAfterOptionNameLocalizations from "../../../localization/quote/search_subcommand_created_after_option_name.json" with { type: 'json' };
+import searchSubcommandCreatedAfterOptionDescriptionLocalizations from "../../../localization/quote/search_subcommand_created_after_option_description.json" with { type: 'json' };
+import searchSubcommandCreatedBeforeOptionNameLocalizations from "../../../localization/quote/search_subcommand_created_before_option_name.json" with { type: 'json' };
+import searchSubcommandCreatedBeforeOptionDescriptionLocalizations from "../../../localization/quote/search_subcommand_created_before_option_description.json" with { type: 'json' };
+import searchSubcommandContentOptionNameLocalizations from "../../../localization/quote/search_subcommand_content_option_name.json" with { type: 'json' };
+import searchSubcommandContentOptionDescriptionLocalizations from "../../../localization/quote/search_subcommand_content_option_description.json" with { type: 'json' };
+import searchSubcommandAuthorOptionNameLocalizations from "../../../localization/quote/search_subcommand_author_option_name.json" with { type: 'json' };
+import searchSubcommandAuthorOptionDescriptionLocalizations from "../../../localization/quote/search_subcommand_author_option_description.json" with { type: 'json' };
+import searchSubcommandAuthorNameOptionNameLocalizations from "../../../localization/quote/search_subcommand_author_name_option_name.json" with { type: 'json' };
+import searchSubcommandAuthorNameOptionDescriptionLocalizations from "../../../localization/quote/search_subcommand_author_name_option_description.json" with { type: 'json' };
+import searchSubcommandIsConversationOptionNameLocalizations from "../../../localization/quote/search_subcommand_is_conversation_option_name.json" with { type: 'json' };
+import searchSubcommandIsConversationOptionDescriptionLocalizations from "../../../localization/quote/search_subcommand_is_conversation_option_description.json" with { type: 'json' };
 import infoSubcommandNameLocalizations from "../../../localization/quote/info_subcommand_name.json" with { type: 'json' };
 import infoSubcommandDescriptionLocalizations from "../../../localization/quote/info_subcommand_description.json" with { type: 'json' };
 import infoSubcommandTokenOptionNameLocalizations from "../../../localization/quote/info_subcommand_token_option_name.json" with { type: 'json' };
@@ -213,6 +231,80 @@ export default {
                 description: searchSubcommandDescriptionLocalizations["en-US"],
                 descriptionLocalizations: searchSubcommandDescriptionLocalizations,
                 type: ApplicationCommandOptionType.Subcommand,
+                options: [
+                    {
+                        name: searchSubcommandCreatorOptionNameLocalizations["en-US"],
+                        nameLocalizations: searchSubcommandCreatorOptionNameLocalizations,
+                        description: searchSubcommandCreatorOptionDescriptionLocalizations["en-US"],
+                        descriptionLocalizations: searchSubcommandCreatorOptionDescriptionLocalizations,
+                        type: ApplicationCommandOptionType.User,
+                        required: false,
+                    },
+                    {
+                        name: searchSubcommandCreatorNameOptionNameLocalizations["en-US"],
+                        nameLocalizations: searchSubcommandCreatorNameOptionNameLocalizations,
+                        description: searchSubcommandCreatorNameOptionDescriptionLocalizations["en-US"],
+                        descriptionLocalizations: searchSubcommandCreatorNameOptionDescriptionLocalizations,
+                        type: ApplicationCommandOptionType.String,
+                        required: false,
+                    },
+                    {
+                        name: searchSubcommandContextOptionNameLocalizations["en-US"],
+                        nameLocalizations: searchSubcommandContextOptionNameLocalizations,
+                        description: searchSubcommandContextOptionDescriptionLocalizations["en-US"],
+                        descriptionLocalizations: searchSubcommandContextOptionDescriptionLocalizations,
+                        type: ApplicationCommandOptionType.String,
+                        required: false,
+                    },
+                    {
+                        name: searchSubcommandCreatedAfterOptionNameLocalizations["en-US"],
+                        nameLocalizations: searchSubcommandCreatedAfterOptionNameLocalizations,
+                        description: searchSubcommandCreatedAfterOptionDescriptionLocalizations["en-US"],
+                        descriptionLocalizations: searchSubcommandCreatedAfterOptionDescriptionLocalizations,
+                        type: ApplicationCommandOptionType.String,
+                        required: false,
+                    },
+                    {
+                        name: searchSubcommandCreatedBeforeOptionNameLocalizations["en-US"],
+                        nameLocalizations: searchSubcommandCreatedBeforeOptionNameLocalizations,
+                        description: searchSubcommandCreatedBeforeOptionDescriptionLocalizations["en-US"],
+                        descriptionLocalizations: searchSubcommandCreatedBeforeOptionDescriptionLocalizations,
+                        type: ApplicationCommandOptionType.String,
+                        required: false,
+                    },
+                    {
+                        name: searchSubcommandContentOptionNameLocalizations["en-US"],
+                        nameLocalizations: searchSubcommandContentOptionNameLocalizations,
+                        description: searchSubcommandContentOptionDescriptionLocalizations["en-US"],
+                        descriptionLocalizations: searchSubcommandContentOptionDescriptionLocalizations,
+                        type: ApplicationCommandOptionType.String,
+                        required: false,
+                    },
+                    {
+                        name: searchSubcommandAuthorOptionNameLocalizations["en-US"],
+                        nameLocalizations: searchSubcommandAuthorOptionNameLocalizations,
+                        description: searchSubcommandAuthorOptionDescriptionLocalizations["en-US"],
+                        descriptionLocalizations: searchSubcommandAuthorOptionDescriptionLocalizations,
+                        type: ApplicationCommandOptionType.User,
+                        required: false,
+                    },
+                    {
+                        name: searchSubcommandAuthorNameOptionNameLocalizations["en-US"],
+                        nameLocalizations: searchSubcommandAuthorNameOptionNameLocalizations,
+                        description: searchSubcommandAuthorNameOptionDescriptionLocalizations["en-US"],
+                        descriptionLocalizations: searchSubcommandAuthorNameOptionDescriptionLocalizations,
+                        type: ApplicationCommandOptionType.String,
+                        required: false,
+                    },
+                    {
+                        name: searchSubcommandIsConversationOptionNameLocalizations["en-US"],
+                        nameLocalizations: searchSubcommandIsConversationOptionNameLocalizations,
+                        description: searchSubcommandIsConversationOptionDescriptionLocalizations["en-US"],
+                        descriptionLocalizations: searchSubcommandIsConversationOptionDescriptionLocalizations,
+                        type: ApplicationCommandOptionType.Boolean,
+                        required: false,
+                    }
+                ]
             },
             {
                 name: infoSubcommandNameLocalizations["en-US"],

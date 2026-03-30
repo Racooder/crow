@@ -1,4 +1,4 @@
-import type { Guild, User } from "discord.js";
+import type { Client, Guild, User } from "discord.js";
 import type { QuoteMeta, QuoteStatement } from "../../generated/prisma/client.js";
 import prisma from "../../prisma.js";
 import type { PopulatedQuote } from "../../util/prisma.js";
@@ -49,3 +49,34 @@ async function formatStatementAuthor(statement: QuoteStatement, guild: Guild | n
     return statement.authorUsername;
 }
 
+const QUOTE_LIST_PAGE_SIZE = 10;
+
+export async function getListQuotes(page: number, filter: QuoteListFilter): Promise<PopulatedQuote[]> {
+    const whereClause = Object.fromEntries(
+        Object.entries(filter).filter(([_, value]) => value !== undefined)
+    );
+
+    return prisma.quoteMeta.findMany({
+        where: whereClause,
+        include: {
+            statements: true,
+        },
+        orderBy: {
+            createdAt: "desc",
+        },
+        skip: (page - 1) * QUOTE_LIST_PAGE_SIZE,
+        take: QUOTE_LIST_PAGE_SIZE,
+    });
+}
+
+export function getUserDisplayName(client: Client, guild: Guild | null, userId: string, fallbackUsername: string): Promise<string> {
+    if (guild) {
+        return guild.members.fetch(userId)
+            .then(member => member.displayName)
+            .catch(() => fallbackUsername);
+    } else {
+        return client.users.fetch(userId)
+            .then(user => user.username)
+            .catch(() => fallbackUsername);
+    }
+}

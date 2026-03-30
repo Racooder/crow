@@ -1,34 +1,20 @@
-import type { ChatInputCommandInteraction } from "discord.js";
-import { Err, type Result } from "../../../result.js";
+import { type ChatInputCommandInteraction } from "discord.js";
+import { Ok, type Result } from "../../../result.js";
 import { debug } from "../../../log.js";
-import type { QuoteListFilter } from "../util.js";
-import type { PopulatedQuote } from "../../../util/prisma.js";
-import prisma from "../../../prisma.js";
-
-const QUOTE_LIST_PAGE_SIZE = 10;
+import { getListQuotes } from "../util.js";
+import createQuoteListEmbed from "../embeds/quoteList.js";
 
 export default async function quoteListCommandHandler(interaction: ChatInputCommandInteraction): Promise<Result> {
     debug("Handling 'quote list' command");
 
-    const quoteObjects = await getListQuotes(1, { guildId: interaction.guildId! });
+    const filter = {
+        guildId: interaction.guildId || interaction.user.id,
+    };
 
-    return Err("Not implemented yet"); // TODO: Implement
-}
+    const quoteObjects = await getListQuotes(1, filter);
+    const embed = await createQuoteListEmbed(interaction.client, interaction.guild, quoteObjects, filter, 1, 1);
 
-async function getListQuotes(page: number, filter: QuoteListFilter): Promise<PopulatedQuote[]> {
-    const whereClause = Object.fromEntries(
-        Object.entries(filter).filter(([_, value]) => value !== undefined)
-    );
+    await interaction.reply({ embeds: [embed] });
 
-    return prisma.quoteMeta.findMany({
-        where: whereClause,
-        include: {
-            statements: true,
-        },
-        orderBy: {
-            createdAt: "desc",
-        },
-        skip: (page - 1) * QUOTE_LIST_PAGE_SIZE,
-        take: QUOTE_LIST_PAGE_SIZE,
-    });
+    return Ok();
 }
