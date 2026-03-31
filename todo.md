@@ -6,3 +6,6 @@
 - Replace ephemeral with flags
 - Replace fail response with exceptions
 - Handle quote edit
+- Fix conversation quote context option
+- Complete buttons
+- Improve quote list code
